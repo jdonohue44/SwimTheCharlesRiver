@@ -10,7 +10,7 @@
 * https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river
 * https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy
 * https://www.crwa.org/water-quality-data
-* https://www.visualcrossing.com/weather/
+* https://www.visualcrossing.com/weather/weather-data-services
 
 ## View the Analysis
 
