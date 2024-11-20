@@ -6,11 +6,10 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston's Charles River"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Jared Donohue (jjd2203)
+  repo-url: https://github.com/jdonohue44/SwimTheCharlesRiver
   date: today
   page-footer:
     right: |
@@ -25,7 +24,7 @@ book:
 
 format:
   html:
-    theme: cosmo
+    theme: cerulean
     code-fold: true
 
 
