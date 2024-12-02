@@ -1,32 +1,32 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "3  Results",
     "section": "",
-    "text": "1 Introduction",
+    "text": "3.1 Water Quality\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nwater2024&lt;-read.csv('./data/crbuoy2024.csv')\nwater2024_summary &lt;- water2024 |&gt; \n  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |&gt;  # Use backticks for special characters\n  group_by(date) |&gt; \n  summarize(\n    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE),  # Convert Celsius to Fahrenheit and calculate mean\n    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),  # Use backticks for special characters\n    avg_chloro = mean(`est.chl.a..ug.l.`, na.rm = TRUE),\n    avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)\n  )\n\n# Reshape data to long format\ndata_long &lt;- water2024_summary |&gt;\n  pivot_longer(cols = starts_with(\"avg\"), names_to = \"variable\", values_to = \"value\")\n\n# Convert date column to Date type\ndata_long$date &lt;- as.Date(data_long$date, format = \"%m/%d/%Y\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = date, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Charles River Water Quality\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") + \n  scale_y_log10()",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
   },
   {
-    "objectID": "data.html",
-    "href": "data.html",
-    "title": "2  Data",
-    "section": "",
-    "text": "2.1 Description",
+    "objectID": "results.html#weather",
+    "href": "results.html#weather",
+    "title": "3  Results",
+    "section": "3.2 Weather",
+    "text": "3.2 Weather\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nweather2024&lt;-read.csv('./data/weather2024daily.csv')\nweather2024&lt;-weather2024 |&gt; \n  select(datetime,temp,precip,windspeed,uvindex,moonphase)\n\n# Reshaping data to long format (excluding date)\ndata_long &lt;- weather2024 |&gt; \n  pivot_longer(\n    cols = c(temp, precip, windspeed, uvindex, moonphase),  # Columns to pivot\n    names_to = \"variable\",  # New column for the variable names\n    values_to = \"value\"     # New column for the values\n)\n\n# Convert date column to Date type\ndata_long$datetime &lt;- as.Date(data_long$datetime, format = \"%Y-%m-%d\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = datetime, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Boston Weather\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\")",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
   },
   {
-    "objectID": "data.html#missing-value-analysis",
-    "href": "data.html#missing-value-analysis",
-    "title": "2  Data",
-    "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis",
+    "objectID": "results.html#correlated",
+    "href": "results.html#correlated",
+    "title": "3  Results",
+    "section": "3.3 Correlated",
+    "text": "3.3 Correlated\n\n3.3.1 Daily\n\n\n3.3.2 Hourly",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
   }
 ]

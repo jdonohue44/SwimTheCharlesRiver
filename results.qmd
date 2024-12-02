@@ -2,13 +2,13 @@
 
 ## Water Quality
 
-```{r}
-# install.packages('dplyr')
-# install.packages('ggplot2')
-# install.packages('tidyr')
-# library(dplyr)
-# library(ggplot2)
-# library(tidyr)
+```{r, message=FALSE, warning=FALSE}
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(ggplot2)) install.packages("ggplot2")
+if (!require(tidyr)) install.packages("tidyr")
+library(dplyr)
+library(ggplot2)
+library(tidyr)
 
 water2024<-read.csv('./data/crbuoy2024.csv')
 water2024_summary <- water2024 |> 
@@ -31,7 +31,7 @@ data_long$date <- as.Date(data_long$date, format = "%m/%d/%Y")
 # Plot with ggplot
 ggplot(data_long, aes(x = date, y = value, color = variable)) +
   geom_line() +
-  labs(title = "Variables over Time", x = "Date", y = "Value") +
+  labs(title = "2024 Charles River Water Quality", x = "Date", y = "Value") +
   theme_minimal() +
   scale_x_date(date_labels = "%b %d", date_breaks = "30 day") + 
   scale_y_log10()
@@ -39,13 +39,13 @@ ggplot(data_long, aes(x = date, y = value, color = variable)) +
 
 ## Weather
 
-```{r}
-# install.packages('dplyr')
-# install.packages('ggplot2')
-# install.packages('tidyr')
-# library(dplyr)
-# library(ggplot2)
-# library(tidyr)
+```{r, message=FALSE, warning=FALSE}
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(ggplot2)) install.packages("ggplot2")
+if (!require(tidyr)) install.packages("tidyr")
+library(dplyr)
+library(ggplot2)
+library(tidyr)
 
 weather2024<-read.csv('./data/weather2024daily.csv')
 weather2024<-weather2024 |> 
@@ -65,7 +65,7 @@ data_long$datetime <- as.Date(data_long$datetime, format = "%Y-%m-%d")
 # Plot with ggplot
 ggplot(data_long, aes(x = datetime, y = value, color = variable)) +
   geom_line() +
-  labs(title = "Variables over Time", x = "Date", y = "Value") +
+  labs(title = "2024 Boston Weather", x = "Date", y = "Value") +
   theme_minimal() +
   scale_x_date(date_labels = "%b %d", date_breaks = "30 day") 
 ```
