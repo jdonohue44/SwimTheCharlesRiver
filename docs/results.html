@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./d3graph.html" rel="next">
+<link href="./conclusion.html" rel="next">
 <link href="./data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -163,14 +163,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./d3graph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
   </div>
 </li>
     </ul>
@@ -183,12 +177,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#water-quality" id="toc-water-quality" class="nav-link active" data-scroll-target="#water-quality"><span class="header-section-number">3.1</span> Water Quality</a></li>
-  <li><a href="#weather" id="toc-weather" class="nav-link" data-scroll-target="#weather"><span class="header-section-number">3.2</span> Weather</a></li>
-  <li><a href="#correlated" id="toc-correlated" class="nav-link" data-scroll-target="#correlated"><span class="header-section-number">3.3</span> Correlated</a>
+  <li><a href="#how-many-days-of-the-year-are-safe-for-swimming-in-the-charles-river" id="toc-how-many-days-of-the-year-are-safe-for-swimming-in-the-charles-river" class="nav-link active" data-scroll-target="#how-many-days-of-the-year-are-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are safe for swimming in the Charles River?</a></li>
+  <li><a href="#is-rainfall-associated-with-water-quality" id="toc-is-rainfall-associated-with-water-quality" class="nav-link" data-scroll-target="#is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</a>
   <ul class="collapse">
-  <li><a href="#daily" id="toc-daily" class="nav-link" data-scroll-target="#daily"><span class="header-section-number">3.3.1</span> Daily</a></li>
-  <li><a href="#hourly" id="toc-hourly" class="nav-link" data-scroll-target="#hourly"><span class="header-section-number">3.3.2</span> Hourly</a></li>
+  <li><a href="#water-quality" id="toc-water-quality" class="nav-link" data-scroll-target="#water-quality"><span class="header-section-number">3.2.1</span> Water Quality</a></li>
+  <li><a href="#weather" id="toc-weather" class="nav-link" data-scroll-target="#weather"><span class="header-section-number">3.2.2</span> Weather</a></li>
+  <li><a href="#correlated" id="toc-correlated" class="nav-link" data-scroll-target="#correlated"><span class="header-section-number">3.2.3</span> Correlated</a></li>
+  <li><a href="#daily" id="toc-daily" class="nav-link" data-scroll-target="#daily"><span class="header-section-number">3.2.4</span> Daily</a></li>
+  <li><a href="#hourly" id="toc-hourly" class="nav-link" data-scroll-target="#hourly"><span class="header-section-number">3.2.5</span> Hourly</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -215,8 +211,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="water-quality" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="water-quality"><span class="header-section-number">3.1</span> Water Quality</h2>
+<section id="how-many-days-of-the-year-are-safe-for-swimming-in-the-charles-river" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="how-many-days-of-the-year-are-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are safe for swimming in the Charles River?</h2>
+</section>
+<section id="is-rainfall-associated-with-water-quality" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</h2>
+<section id="water-quality" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="water-quality"><span class="header-section-number">3.2.1</span> Water Quality</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -262,8 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="weather" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="weather"><span class="header-section-number">3.2</span> Weather</h2>
+<section id="weather" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="weather"><span class="header-section-number">3.2.2</span> Weather</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -305,13 +306,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="correlated" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="correlated"><span class="header-section-number">3.3</span> Correlated</h2>
-<section id="daily" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="daily"><span class="header-section-number">3.3.1</span> Daily</h3>
+<section id="correlated" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="correlated"><span class="header-section-number">3.2.3</span> Correlated</h3>
 </section>
-<section id="hourly" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="hourly"><span class="header-section-number">3.3.2</span> Hourly</h3>
+<section id="daily" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="daily"><span class="header-section-number">3.2.4</span> Daily</h3>
+</section>
+<section id="hourly" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="hourly"><span class="header-section-number">3.2.5</span> Hourly</h3>
 
 
 </section>
@@ -745,8 +747,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./d3graph.html" class="pagination-link" aria-label="Interactive graph">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./conclusion.html" class="pagination-link" aria-label="Conclusion">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

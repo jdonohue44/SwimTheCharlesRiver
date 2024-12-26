@@ -1,30 +1,50 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
+    "section": "",
+    "text": "1 Introduction\nMaking urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York:\n\nCharles River Swimming Club\nCharles River Swim Park Project\nPlus Pool\nRiver Keeper\n\nThis project seeks to analyze the water quality of Boston’s Charles River to identify safe swimming days throughout the year. Additionally, it aims to explore the potential correlation between rainfall in Boston and the water quality of the Charles River on subsequent days. Understanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers.\n\n\n2 Methodology\n\nData Collection and Pre-processing: Gathering and cleaning data from the aforementioned sources to ensure consistency and accuracy.\nExploratory Data Analysis: Investigating patterns and trends in the data to identify potential safe swimming days.\nCorrelation Analysis: Examining the relationship between rainfall events and subsequent changes in water quality.\nVisualization: Creating clear and informative visualizations to communicate findings effectively.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "2  Data",
+    "section": "",
+    "text": "2.1 Limitations",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
+    "objectID": "data.html#limitations",
+    "href": "data.html#limitations",
+    "title": "2  Data",
+    "section": "",
+    "text": "Charles River Buoy data available from 2015-2019, 2022-2024. Covid years are missing data (2020-2021).\nWeather data only available for small time ranges without paid subscription.\n\nObtained daily for 2024.\nObtained hourly for August, 2024.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
     "objectID": "results.html",
     "href": "results.html",
     "title": "3  Results",
     "section": "",
-    "text": "3.1 Water Quality\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nwater2024&lt;-read.csv('./data/crbuoy2024.csv')\nwater2024_summary &lt;- water2024 |&gt; \n  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |&gt;  # Use backticks for special characters\n  group_by(date) |&gt; \n  summarize(\n    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE),  # Convert Celsius to Fahrenheit and calculate mean\n    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),  # Use backticks for special characters\n    avg_chloro = mean(`est.chl.a..ug.l.`, na.rm = TRUE),\n    avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)\n  )\n\n# Reshape data to long format\ndata_long &lt;- water2024_summary |&gt;\n  pivot_longer(cols = starts_with(\"avg\"), names_to = \"variable\", values_to = \"value\")\n\n# Convert date column to Date type\ndata_long$date &lt;- as.Date(data_long$date, format = \"%m/%d/%Y\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = date, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Charles River Water Quality\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") + \n  scale_y_log10()",
+    "text": "3.1 How many days of the year are safe for swimming in the Charles River?",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
   },
   {
-    "objectID": "results.html#weather",
-    "href": "results.html#weather",
+    "objectID": "results.html#is-rainfall-associated-with-water-quality",
+    "href": "results.html#is-rainfall-associated-with-water-quality",
     "title": "3  Results",
-    "section": "3.2 Weather",
-    "text": "3.2 Weather\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nweather2024&lt;-read.csv('./data/weather2024daily.csv')\nweather2024&lt;-weather2024 |&gt; \n  select(datetime,temp,precip,windspeed,uvindex,moonphase)\n\n# Reshaping data to long format (excluding date)\ndata_long &lt;- weather2024 |&gt; \n  pivot_longer(\n    cols = c(temp, precip, windspeed, uvindex, moonphase),  # Columns to pivot\n    names_to = \"variable\",  # New column for the variable names\n    values_to = \"value\"     # New column for the values\n)\n\n# Convert date column to Date type\ndata_long$datetime &lt;- as.Date(data_long$datetime, format = \"%Y-%m-%d\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = datetime, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Boston Weather\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\")",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
-    ]
-  },
-  {
-    "objectID": "results.html#correlated",
-    "href": "results.html#correlated",
-    "title": "3  Results",
-    "section": "3.3 Correlated",
-    "text": "3.3 Correlated\n\n3.3.1 Daily\n\n\n3.3.2 Hourly",
+    "section": "3.2 Is rainfall associated with water quality?",
+    "text": "3.2 Is rainfall associated with water quality?\n\n3.2.1 Water Quality\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nwater2024&lt;-read.csv('./data/crbuoy2024.csv')\nwater2024_summary &lt;- water2024 |&gt; \n  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |&gt;  # Use backticks for special characters\n  group_by(date) |&gt; \n  summarize(\n    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE),  # Convert Celsius to Fahrenheit and calculate mean\n    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),  # Use backticks for special characters\n    avg_chloro = mean(`est.chl.a..ug.l.`, na.rm = TRUE),\n    avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)\n  )\n\n# Reshape data to long format\ndata_long &lt;- water2024_summary |&gt;\n  pivot_longer(cols = starts_with(\"avg\"), names_to = \"variable\", values_to = \"value\")\n\n# Convert date column to Date type\ndata_long$date &lt;- as.Date(data_long$date, format = \"%m/%d/%Y\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = date, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Charles River Water Quality\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") + \n  scale_y_log10()\n\n\n\n\n\n\n\n\n\n\n\n3.2.2 Weather\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nweather2024&lt;-read.csv('./data/weather2024daily.csv')\nweather2024&lt;-weather2024 |&gt; \n  select(datetime,temp,precip,windspeed,uvindex,moonphase)\n\n# Reshaping data to long format (excluding date)\ndata_long &lt;- weather2024 |&gt; \n  pivot_longer(\n    cols = c(temp, precip, windspeed, uvindex, moonphase),  # Columns to pivot\n    names_to = \"variable\",  # New column for the variable names\n    values_to = \"value\"     # New column for the values\n)\n\n# Convert date column to Date type\ndata_long$datetime &lt;- as.Date(data_long$datetime, format = \"%Y-%m-%d\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = datetime, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Boston Weather\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") \n\n\n\n\n\n\n\n\n\n\n\n3.2.3 Correlated\n\n\n3.2.4 Daily\n\n\n3.2.5 Hourly",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]

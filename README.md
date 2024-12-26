@@ -1,20 +1,34 @@
-# Swim the Charles River
-Jump straight to the analysis and data visualizations: https://jdonohue44.github.io/SwimTheCharlesRiver/.
+## View the Report
+Explore the full analysis and visualizations [here](https://jdonohue44.github.io/SwimTheCharlesRiver/).
 
-## Objective
-Urban waterways have long been considered too polluted for swimming, but a growing movement is challenging this perception. Rivers like the Charles in Boston and the Hudson in New York are now the focus of ambitious revitalization efforts aimed at restoring water quality and public swimming access. This investigation examines the swimmability of the Charles River, as well as the factors affecting urban water systems, such as sewage infrastructure, industrial runoff, and rainfall. By analyzing these critical elements, the research seeks to assess the current state of urban river water quality and the potential for safe recreational use.
-* https://pluspool.com/pool/design/
-* https://www.charlesriverswimmingclub.org/
-* https://www.riverkeeper.org/
+## About
+
+This project analyzes the water quality of the Charles River to determine safe 
+swimming days and investigates the correlation between rainfall in Boston and 
+river water quality. Inspired by initiatives like the 
+[Charles River Swimming Club](https://www.charlesriverswimmingclub.org/) and
+the [Charles River Swim Park Project](https://thecharles.org/swim-park-project/)
+in Boston, as well as the [Plus Pool](https://pluspool.com/pool/design/) and 
+[River Keeper](https://www.riverkeeper.org/) in New York, this study aims to 
+provide insights into the feasibility of year-round swimming in the Charles River.
 
 ## Data
-The research draws on comprehensive water quality data from multiple authoritative sources. The EPA's Charles River monitoring program provides live water quality measurements and buoy data, offering real-time insights into river conditions. The Charles River Watershed Association (CRWA) contributes additional water quality datasets, enhancing the depth of environmental analysis. Save the Harbor's annual report card will provide comparative urban water quality metrics. To contextualize environmental conditions, weather data from Visual Crossing will be integrated to correlate water quality with meteorological factors, enabling a more nuanced understanding of urban river ecosystem dynamics.
-* https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river
-* https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy
-* https://www.savetheharbor.org/reportcard
-* https://www.crwa.org/water-quality-data
-* https://www.visualcrossing.com/weather/weather-data-services
 
-## Analysis and Data Visualizations
+The following data sources were used for this analysis:
 
-https://jdonohue44.github.io/SwimTheCharlesRiver/
+- **[EPA Live Water Quality Data](https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river)**: Real-time water quality metrics.
+- **[EPA Charles River Buoy Information](https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy)**: Additional context on water quality monitoring.
+- **[Save The Harbor Report Card](https://www.savetheharbor.org/reportcard)**: Annual assessments of the harbor’s health.
+- **[Charles River Watershed Association Water Quality Data](https://www.crwa.org/water-quality-data)**: Historical water quality data.
+- **[Visual Crossing Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services)**: Rainfall data for Boston.
+
+## Contribute to this Package
+
+Contributions are welcome! Follow these steps to contribute:
+
+1. **Fork the Repository**: Create your own copy of the project.
+2. **Create a Branch**: Make a new branch for your feature or bug fix.
+3. **Make Your Changes**: Implement your improvements or fixes.
+4. **Commit Your Changes**: Use descriptive commit messages.
+5. **Push to the Branch**: Push your changes to your forked repository.
+6. **Open a Pull Request**: Submit a pull request to the main repository.

@@ -1,5 +1,15 @@
 # Data
 
-## Description
+- **[EPA Live Water Quality Data](https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river)**: Real-time water quality metrics.
+- **[EPA Charles River Buoy Information](https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy)**: Additional context on water quality monitoring.
+- **[Save The Harbor Report Card](https://www.savetheharbor.org/reportcard)**: Annual assessments of the harbor’s health.
+- **[Charles River Watershed Association Water Quality Data](https://www.crwa.org/water-quality-data)**: Historical water quality data.
+- **[Visual Crossing Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services)**: Rainfall data for Boston.
 
-## Missing value analysis
+## Limitations
+
+- Charles River Buoy data available from 2015-2019, 2022-2024. Covid years are missing data (2020-2021).
+- Weather data only available for small time ranges without paid subscription. 
+  - Obtained daily for 2024.
+  - Obtained hourly for August, 2024.
+

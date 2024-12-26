@@ -1,6 +1,10 @@
 # Results
 
-## Water Quality
+## How many days of the year are safe for swimming in the Charles River?
+
+## Is rainfall associated with water quality?
+
+### Water Quality
 
 ```{r, message=FALSE, warning=FALSE}
 if (!require(dplyr)) install.packages("dplyr")
@@ -37,7 +41,7 @@ ggplot(data_long, aes(x = date, y = value, color = variable)) +
   scale_y_log10()
 ```
 
-## Weather
+### Weather
 
 ```{r, message=FALSE, warning=FALSE}
 if (!require(dplyr)) install.packages("dplyr")
@@ -70,7 +74,8 @@ ggplot(data_long, aes(x = datetime, y = value, color = variable)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "30 day") 
 ```
 
-## Correlated
+
+### Correlated
 
 ### Daily
 
