@@ -1,7 +1,4 @@
-## View the Report
-Explore the full analysis and visualizations [here](https://jdonohue44.github.io/SwimTheCharlesRiver/).
-
-## About
+# Swim the Charles River: Analyzing Safe-for-Swim Days in Boston's main urban river.
 
 This project analyzes the water quality of the Charles River to determine safe 
 swimming days and investigates the correlation between rainfall in Boston and 
@@ -10,7 +7,8 @@ river water quality. Inspired by initiatives like the
 the [Charles River Swim Park Project](https://thecharles.org/swim-park-project/)
 in Boston, as well as the [Plus Pool](https://pluspool.com/pool/design/) and 
 [River Keeper](https://www.riverkeeper.org/) in New York, this study aims to 
-provide insights into the feasibility of year-round swimming in the Charles River.
+provide insights into the feasibility of year-round swimming in the Charles River. 
+Explore the full analysis and visualizations [here](https://jdonohue44.github.io/SwimTheCharlesRiver/).
 
 ## Data
 

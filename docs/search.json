@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
     "section": "",
-    "text": "1 Introduction\nMaking urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York:\n\nCharles River Swimming Club\nCharles River Swim Park Project\nPlus Pool\nRiver Keeper\n\nThis project seeks to analyze the water quality of Boston’s Charles River to identify safe swimming days throughout the year. Additionally, it aims to explore the potential correlation between rainfall in Boston and the water quality of the Charles River on subsequent days. Understanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers.\n\n\n2 Methodology\n\nData Collection and Pre-processing: Gathering and cleaning data from the aforementioned sources to ensure consistency and accuracy.\nExploratory Data Analysis: Investigating patterns and trends in the data to identify potential safe swimming days.\nCorrelation Analysis: Examining the relationship between rainfall events and subsequent changes in water quality.\nVisualization: Creating clear and informative visualizations to communicate findings effectively.",
+    "text": "1 Introduction\nMaking urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York:\n\nCharles River Swimming Club\nCharles River Swim Park Project\nPlus Pool\nRiver Keeper\n\nBut why aren’t more people swimming in urban waters to begin with? This project seeks to analyze the water quality of Boston’s Charles River to identify the number of safe swimming days throughout the year. Our hypothesis is that the number of safe swimming days is higher than people realize, and that they would consider swimming more often if they were aware of this fact. Qualitative research would be beneficial to understand the top deterrents for swimming in the Charles river, with the aim of removing barriers to entry.\nAdditionally, this analysis explores the correlation between rainfall in Boston and bacteria levels—a known deterrent for open water swimmers.\nUnderstanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers to regain access to a valuable recreational resource: urban waters.\n\n\n2 Methodology\n\nData Collection and Pre-processing: Gather and clean data from Charles River buoy and historical weather data.\nExploratory Data Analysis: Investigate the number of days where bacteria levels are withing safe range, and if rainy days are clustered with unsafe bacteria levels.\nVisualization: Create clear visualizations to communicate 1) the number of safe-for-swim days, and 2) the relationship of rain to water quality.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -14,17 +14,37 @@
     "href": "data.html",
     "title": "2  Data",
     "section": "",
-    "text": "2.1 Limitations",
+    "text": "2.1 Data Sources used for this Analysis",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]
   },
   {
-    "objectID": "data.html#limitations",
-    "href": "data.html#limitations",
+    "objectID": "data.html#data-sources-used-for-this-analysis",
+    "href": "data.html#data-sources-used-for-this-analysis",
     "title": "2  Data",
     "section": "",
-    "text": "Charles River Buoy data available from 2015-2019, 2022-2024. Covid years are missing data (2020-2021).\nWeather data only available for small time ranges without paid subscription.\n\nObtained daily for 2024.\nObtained hourly for August, 2024.",
+    "text": "EPA Live Water Quality Data: Real-time water quality metrics.\nVisual Crossing Weather Data Services: Rainfall data for Boston.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
+    "objectID": "data.html#missing-data-analysis",
+    "href": "data.html#missing-data-analysis",
+    "title": "2  Data",
+    "section": "2.2 Missing Data Analysis",
+    "text": "2.2 Missing Data Analysis\n\nCharles River Buoy data available from 2015-2019, 2022-2024. Covid years are missing data (2020-2021).\nWeather data only available for small time ranges without paid subscription.\n\nObtained daily for 2024.\nObtained hourly for August, 2024.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
+    "objectID": "data.html#additional-data-resources",
+    "href": "data.html#additional-data-resources",
+    "title": "2  Data",
+    "section": "2.3 Additional Data Resources",
+    "text": "2.3 Additional Data Resources\n\nEPA Charles River Buoy Information: Additional context on water quality monitoring.\nSave The Harbor Report Card: Annual assessments of the harbor’s health.\nCharles River Watershed Association Water Quality Data: Historical water quality data.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]
@@ -34,7 +54,17 @@
     "href": "results.html",
     "title": "3  Results",
     "section": "",
-    "text": "3.1 How many days of the year are safe for swimming in the Charles River?",
+    "text": "3.1 How many days of the year are bacteria levels safe for swimming in the Charles River?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river",
+    "href": "results.html#how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river",
+    "title": "3  Results",
+    "section": "",
+    "text": "3.1.1 Safe-for-Swim Days\n\n\nCode\nwater2024_summary &lt;- water2024_summary |&gt;\n  mutate(swim_status = if_else(avg_est_cyano &lt; 20000 & avg_temp &gt; 70,\n                              \"Safe to Swim\", \n                              \"Not Safe to Swim\"),\n         swim_status = factor(swim_status))\n\nsafe_days &lt;- sum(water2024_summary$swim_status == \"Safe to Swim\", na.rm = TRUE)\ntotal_days &lt;- nrow(water2024_summary)\npercent_safe &lt;- round((safe_days/total_days) * 100)\n\nggplot(water2024_summary, aes(x = date)) +\n  # Create blocks of color for the background\n  geom_tile(aes(y = 1, fill = swim_status, height = 2)) +\n  # Add simple points to mark each day\n  geom_point(aes(y = 1), color = \"white\", size = 1) +\n  # Colors that are colorblind-friendly\n  scale_fill_manual(values = c(\"Safe to Swim\" = \"#2ECC71\", \n                              \"Not Safe to Swim\" = \"#E74C3C\")) +\n  labs(title = \"Charles River Swimming Safety\",\n       subtitle = paste0(safe_days, \" safe swimming days (\", percent_safe, \"% of season)\"),\n       x = \"Date\") +\n  theme_minimal(base_size = 14) +\n  theme(\n    legend.title = element_blank(),\n    legend.position = \"bottom\",\n    plot.title = element_text(face = \"bold\", size = 16),\n    plot.subtitle = element_text(size = 12),\n    axis.text.y = element_blank(),\n    axis.title.y = element_blank(),\n    panel.grid = element_blank()\n  ) +\n  scale_x_date(date_labels = \"%B\", date_breaks = \"1 month\")\n\n\n\n\n\n\n\n\n\n\n\n3.1.2 Bacteria Levels\n\n\nCode\nggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +\n  geom_rect(aes(xmin = min(date), xmax = max(date), \n                ymin = 0, ymax = 20000), \n            fill = \"lightgreen\", alpha = 0.05) +\n  geom_rect(aes(xmin = min(date), xmax = max(date), \n                ymin = 20000, ymax = 70000), \n            fill = \"lightyellow\", alpha = 0.05) +\n  geom_rect(aes(xmin = min(date), xmax = max(date), \n                ymin = 70000, ymax = Inf), \n            fill = \"pink\", alpha = 0.05) +\n  geom_line() +\n  geom_point() +\n  geom_hline(yintercept = 20000, linetype = \"dashed\", color = \"yellow\") +\n  geom_hline(yintercept = 70000, linetype = \"dashed\", color = \"pink\") +\n  annotate(\"text\", x = min(water2024_summary$date), y = 7000, \n           label = \"Low Risk\", hjust = 0) +\n  annotate(\"text\", x = min(water2024_summary$date), y = 25000, \n           label = \"Medium Risk\", hjust = 0) +\n  annotate(\"text\", x = min(water2024_summary$date), y = 75000, \n           label = \"High Risk\", hjust = 0) +\n  scale_y_continuous(\n    labels = scales::comma, \n    breaks = seq(0, max(water2024_summary$avg_est_cyano), by = 10000)\n    ) +\n  labs(title = \"2024 Charles River Cyanobacteria Levels\", \n       x = \"Date\", \n       y = \"Cyanobacteria Cells/mL\") +\n  theme_bw() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"15 day\")\n\n\n\n\n\n\n\n\n\n\n\n3.1.3 Water Temperature\n\n\nCode\nggplot(water2024_summary, aes(x = date, y = avg_temp)) +\n  geom_rect(aes(xmin = min(date), xmax = max(date), \n                ymin = 60, ymax = 70), \n            fill = \"lightblue\", alpha = 0.01) +\n  geom_rect(aes(xmin = min(date), xmax = max(date), \n                ymin = 50, ymax = 60), \n            fill = \"blue\", alpha = 0.01) +\n  geom_line() +\n  geom_point() +\n  geom_hline(yintercept = 60, linetype = \"dashed\", color = \"blue\") +\n  geom_hline(yintercept = 50, linetype = \"dashed\", color = \"lightblue\") +\n  annotate(\"text\", x = min(water2024_summary$date), y = 61, \n           label = \"2-3mm Wetsuit\", hjust = 0) +\n  annotate(\"text\", x = min(water2024_summary$date), y = 51, \n           label = \"4-5mm Wetsuit\", hjust = 0) +\n  scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +\n  labs(title = \"2024 Charles River Water Temperature\", \n       x = \"Date\", \n       y = \"Temperature (F)\") +\n  theme_bw() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"15 day\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
@@ -44,9 +74,29 @@
     "href": "results.html#is-rainfall-associated-with-water-quality",
     "title": "3  Results",
     "section": "3.2 Is rainfall associated with water quality?",
-    "text": "3.2 Is rainfall associated with water quality?\n\n3.2.1 Water Quality\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nwater2024&lt;-read.csv('./data/crbuoy2024.csv')\nwater2024_summary &lt;- water2024 |&gt; \n  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |&gt;  # Use backticks for special characters\n  group_by(date) |&gt; \n  summarize(\n    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE),  # Convert Celsius to Fahrenheit and calculate mean\n    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),  # Use backticks for special characters\n    avg_chloro = mean(`est.chl.a..ug.l.`, na.rm = TRUE),\n    avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)\n  )\n\n# Reshape data to long format\ndata_long &lt;- water2024_summary |&gt;\n  pivot_longer(cols = starts_with(\"avg\"), names_to = \"variable\", values_to = \"value\")\n\n# Convert date column to Date type\ndata_long$date &lt;- as.Date(data_long$date, format = \"%m/%d/%Y\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = date, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Charles River Water Quality\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") + \n  scale_y_log10()\n\n\n\n\n\n\n\n\n\n\n\n3.2.2 Weather\n\n\nCode\nif (!require(dplyr)) install.packages(\"dplyr\")\nif (!require(ggplot2)) install.packages(\"ggplot2\")\nif (!require(tidyr)) install.packages(\"tidyr\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nweather2024&lt;-read.csv('./data/weather2024daily.csv')\nweather2024&lt;-weather2024 |&gt; \n  select(datetime,temp,precip,windspeed,uvindex,moonphase)\n\n# Reshaping data to long format (excluding date)\ndata_long &lt;- weather2024 |&gt; \n  pivot_longer(\n    cols = c(temp, precip, windspeed, uvindex, moonphase),  # Columns to pivot\n    names_to = \"variable\",  # New column for the variable names\n    values_to = \"value\"     # New column for the values\n)\n\n# Convert date column to Date type\ndata_long$datetime &lt;- as.Date(data_long$datetime, format = \"%Y-%m-%d\")\n\n# Plot with ggplot\nggplot(data_long, aes(x = datetime, y = value, color = variable)) +\n  geom_line() +\n  labs(title = \"2024 Boston Weather\", x = \"Date\", y = \"Value\") +\n  theme_minimal() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"30 day\") \n\n\n\n\n\n\n\n\n\n\n\n3.2.3 Correlated\n\n\n3.2.4 Daily\n\n\n3.2.5 Hourly",
+    "text": "3.2 Is rainfall associated with water quality?\n\n3.2.1 Rain vs. Bacteria Levels\n\n\nCode\nlibrary(ggplot2)\nlibrary(scales)\n\nweather_and_water_2024&lt;-merge(water2024_summary, weather2024, by = 'date')\n\nggplot(weather_and_water_2024, aes(x = date)) +\n  geom_col(aes(y = precip, color = \"Precipitation\")) +\n  geom_line(aes(y = avg_est_cyano / 75000, color = \"Avg Est Cyano\")) +\n  scale_y_continuous(\n    name = \"Precipitation (inches)\",\n    limits = c(0, 2),\n    breaks = seq(0, 2, 0.5),\n    sec.axis = sec_axis(~.*75000, name = \"Avg Est Cyano\", \n                        breaks = seq(0, 150000, 30000))\n  ) +\n  scale_color_manual(values = c(\"Precipitation\" = \"blue\", \"Avg Est Cyano\" = \"red\")) +\n  labs(title = \"Precipitation and Avg Est Cyano over Time\",\n       x = \"Date\",\n       color = \"Variable\") +\n  theme_minimal() +\n  theme(axis.title.y.right = element_text(color = \"red\"),\n        axis.title.y.left = element_text(color = \"blue\"))\n\n\n\n\n\n\n\n\n\n\n\n3.2.2 Precipitation\n\n\nCode\nggplot(weather2024, aes(x = date, y = precip)) +\n  geom_col() +\n  labs(title = \"2024 Boston Precipitation\", x = \"Date\", y = \"Precipitation (inches)\") +\n  theme_bw() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"15 day\") \n\n\n\n\n\n\n\n\n\n\n\n3.2.3 Air Temperature\n\n\nCode\nggplot(weather2024, aes(x = date, y = temp)) +\n  geom_line() +\n  geom_point() +\n  scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +\n  labs(title = \"2024 Boston Air Temperature\", x = \"Date\", y = \"Temperature (F)\") +\n  theme_bw() +\n  scale_x_date(date_labels = \"%b %d\", date_breaks = \"15 day\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "conclusion.html",
+    "href": "conclusion.html",
+    "title": "4  Conclusion",
+    "section": "",
+    "text": "4.1 Future Work",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusion</span>"
+    ]
+  },
+  {
+    "objectID": "conclusion.html#future-work",
+    "href": "conclusion.html#future-work",
+    "title": "4  Conclusion",
+    "section": "",
+    "text": "Qualitative research / survey data on what locals think of the water quality and reasons to swim/not swim in the river.\nHudson river buoy analysis through Riverkeeper program to expand this analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusion</span>"
     ]
   }
 ]

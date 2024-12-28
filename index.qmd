@@ -6,12 +6,15 @@ Making urban waters more accessible to swimmers is a growing trend, with several
  - [Charles River Swim Park Project](https://thecharles.org/swim-park-project/)
  - [Plus Pool](https://pluspool.com/pool/design/)
  - [River Keeper](https://www.riverkeeper.org/)
+ 
+*But why aren't more people swimming in urban waters to begin with?* This project seeks to analyze the water quality of Boston's Charles River to identify the number of safe swimming days throughout the year. Our hypothesis is that the number of safe swimming days is higher than people realize, and that they would consider swimming more often if they were aware of this fact. Qualitative research would be beneficial to understand the top deterrents for swimming in the Charles river, with the aim of removing barriers to entry.
 
-This project seeks to analyze the water quality of Boston's Charles River to identify safe swimming days throughout the year. Additionally, it aims to explore the potential correlation between rainfall in Boston and the water quality of the Charles River on subsequent days. Understanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers.
+Additionally, this analysis explores the correlation between rainfall in Boston and bacteria levels—a known deterrent for open water swimmers. 
+
+Understanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers to regain access to a valuable recreational resource: urban waters.
 
 # Methodology
 
-1. **Data Collection and Pre-processing**: Gathering and cleaning data from the aforementioned sources to ensure consistency and accuracy.
-2. **Exploratory Data Analysis**: Investigating patterns and trends in the data to identify potential safe swimming days.
-3. **Correlation Analysis**: Examining the relationship between rainfall events and subsequent changes in water quality.
-4. **Visualization**: Creating clear and informative visualizations to communicate findings effectively.
+1. **Data Collection and Pre-processing**: Gather and clean data from Charles River buoy and historical weather data.
+2. **Exploratory Data Analysis**: Investigate the number of days where bacteria levels are withing safe range, and if rainy days are clustered with unsafe bacteria levels.
+3. **Visualization**: Create clear visualizations to communicate 1) the number of safe-for-swim days, and 2) the relationship of rain to water quality.

@@ -1,12 +1,7 @@
 # Results
+## How many days of the year are bacteria levels safe for swimming in the Charles River?
 
-## How many days of the year are safe for swimming in the Charles River?
-
-## Is rainfall associated with water quality?
-
-### Water Quality
-
-```{r, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 if (!require(dplyr)) install.packages("dplyr")
 if (!require(ggplot2)) install.packages("ggplot2")
 if (!require(tidyr)) install.packages("tidyr")
@@ -14,69 +9,165 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
+#Load data
 water2024<-read.csv('./data/crbuoy2024.csv')
 water2024_summary <- water2024 |> 
-  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |>  # Use backticks for special characters
+  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
   group_by(date) |> 
   summarize(
-    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE),  # Convert Celsius to Fahrenheit and calculate mean
-    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),  # Use backticks for special characters
+    avg_temp = mean((temp.c * 9/5) + 32, na.rm = TRUE), 
+    avg_oxygen = mean(`do..mg.l.`, na.rm = TRUE),
     avg_chloro = mean(`est.chl.a..ug.l.`, na.rm = TRUE),
     avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)
   )
-
-# Reshape data to long format
-data_long <- water2024_summary |>
-  pivot_longer(cols = starts_with("avg"), names_to = "variable", values_to = "value")
-
-# Convert date column to Date type
-data_long$date <- as.Date(data_long$date, format = "%m/%d/%Y")
-
-# Plot with ggplot
-ggplot(data_long, aes(x = date, y = value, color = variable)) +
-  geom_line() +
-  labs(title = "2024 Charles River Water Quality", x = "Date", y = "Value") +
-  theme_minimal() +
-  scale_x_date(date_labels = "%b %d", date_breaks = "30 day") + 
-  scale_y_log10()
+water2024_summary$date <- as.Date(water2024_summary$date, format = "%m/%d/%Y")
 ```
 
-### Weather
-
+### Safe-for-Swim Days
 ```{r, message=FALSE, warning=FALSE}
-if (!require(dplyr)) install.packages("dplyr")
-if (!require(ggplot2)) install.packages("ggplot2")
-if (!require(tidyr)) install.packages("tidyr")
-library(dplyr)
-library(ggplot2)
-library(tidyr)
+water2024_summary <- water2024_summary |>
+  mutate(swim_status = if_else(avg_est_cyano < 20000 & avg_temp > 70,
+                              "Safe to Swim", 
+                              "Not Safe to Swim"),
+         swim_status = factor(swim_status))
 
+safe_days <- sum(water2024_summary$swim_status == "Safe to Swim", na.rm = TRUE)
+total_days <- nrow(water2024_summary)
+percent_safe <- round((safe_days/total_days) * 100)
+
+ggplot(water2024_summary, aes(x = date)) +
+  # Create blocks of color for the background
+  geom_tile(aes(y = 1, fill = swim_status, height = 2)) +
+  # Add simple points to mark each day
+  geom_point(aes(y = 1), color = "white", size = 1) +
+  # Colors that are colorblind-friendly
+  scale_fill_manual(values = c("Safe to Swim" = "#2ECC71", 
+                              "Not Safe to Swim" = "#E74C3C")) +
+  labs(title = "Charles River Swimming Safety",
+       subtitle = paste0(safe_days, " safe swimming days (", percent_safe, "% of season)"),
+       x = "Date") +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(size = 12),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  scale_x_date(date_labels = "%B", date_breaks = "1 month")
+```
+
+### Bacteria Levels
+```{r, message=FALSE, warning=FALSE}
+ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 0, ymax = 20000), 
+            fill = "lightgreen", alpha = 0.05) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 20000, ymax = 70000), 
+            fill = "lightyellow", alpha = 0.05) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 70000, ymax = Inf), 
+            fill = "pink", alpha = 0.05) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 20000, linetype = "dashed", color = "yellow") +
+  geom_hline(yintercept = 70000, linetype = "dashed", color = "pink") +
+  annotate("text", x = min(water2024_summary$date), y = 7000, 
+           label = "Low Risk", hjust = 0) +
+  annotate("text", x = min(water2024_summary$date), y = 25000, 
+           label = "Medium Risk", hjust = 0) +
+  annotate("text", x = min(water2024_summary$date), y = 75000, 
+           label = "High Risk", hjust = 0) +
+  scale_y_continuous(
+    labels = scales::comma, 
+    breaks = seq(0, max(water2024_summary$avg_est_cyano), by = 10000)
+    ) +
+  labs(title = "2024 Charles River Cyanobacteria Levels", 
+       x = "Date", 
+       y = "Cyanobacteria Cells/mL") +
+  theme_bw() +
+  scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
+```
+
+### Water Temperature
+```{r, message=FALSE, warning=FALSE}
+ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 60, ymax = 70), 
+            fill = "lightblue", alpha = 0.01) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 50, ymax = 60), 
+            fill = "blue", alpha = 0.01) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 60, linetype = "dashed", color = "blue") +
+  geom_hline(yintercept = 50, linetype = "dashed", color = "lightblue") +
+  annotate("text", x = min(water2024_summary$date), y = 61, 
+           label = "2-3mm Wetsuit", hjust = 0) +
+  annotate("text", x = min(water2024_summary$date), y = 51, 
+           label = "4-5mm Wetsuit", hjust = 0) +
+  scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +
+  labs(title = "2024 Charles River Water Temperature", 
+       x = "Date", 
+       y = "Temperature (F)") +
+  theme_bw() +
+  scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
+```
+## Is rainfall associated with water quality?
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 weather2024<-read.csv('./data/weather2024daily.csv')
 weather2024<-weather2024 |> 
-  select(datetime,temp,precip,windspeed,uvindex,moonphase)
-
-# Reshaping data to long format (excluding date)
-data_long <- weather2024 |> 
-  pivot_longer(
-    cols = c(temp, precip, windspeed, uvindex, moonphase),  # Columns to pivot
-    names_to = "variable",  # New column for the variable names
-    values_to = "value"     # New column for the values
-)
-
-# Convert date column to Date type
-data_long$datetime <- as.Date(data_long$datetime, format = "%Y-%m-%d")
-
-# Plot with ggplot
-ggplot(data_long, aes(x = datetime, y = value, color = variable)) +
-  geom_line() +
-  labs(title = "2024 Boston Weather", x = "Date", y = "Value") +
-  theme_minimal() +
-  scale_x_date(date_labels = "%b %d", date_breaks = "30 day") 
+  select(datetime,temp,precip)
+weather2024$date<-as.Date(weather2024$datetime, format = "%Y-%m-%d")
 ```
 
+### Rain vs. Bacteria Levels
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(scales)
 
-### Correlated
+weather_and_water_2024<-merge(water2024_summary, weather2024, by = 'date')
 
-### Daily
+ggplot(weather_and_water_2024, aes(x = date)) +
+  geom_col(aes(y = precip, color = "Precipitation")) +
+  geom_line(aes(y = avg_est_cyano / 75000, color = "Avg Est Cyano")) +
+  scale_y_continuous(
+    name = "Precipitation (inches)",
+    limits = c(0, 2),
+    breaks = seq(0, 2, 0.5),
+    sec.axis = sec_axis(~.*75000, name = "Avg Est Cyano", 
+                        breaks = seq(0, 150000, 30000))
+  ) +
+  scale_color_manual(values = c("Precipitation" = "blue", "Avg Est Cyano" = "red")) +
+  labs(title = "Precipitation and Avg Est Cyano over Time",
+       x = "Date",
+       color = "Variable") +
+  theme_minimal() +
+  theme(axis.title.y.right = element_text(color = "red"),
+        axis.title.y.left = element_text(color = "blue"))
 
-### Hourly
+```
+
+### Precipitation
+```{r, message=FALSE, warning=FALSE}
+ggplot(weather2024, aes(x = date, y = precip)) +
+  geom_col() +
+  labs(title = "2024 Boston Precipitation", x = "Date", y = "Precipitation (inches)") +
+  theme_bw() +
+  scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
+```
+
+### Air Temperature
+```{r, message=FALSE, warning=FALSE}
+ggplot(weather2024, aes(x = date, y = temp)) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +
+  labs(title = "2024 Boston Air Temperature", x = "Date", y = "Temperature (F)") +
+  theme_bw() +
+  scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
+```
+

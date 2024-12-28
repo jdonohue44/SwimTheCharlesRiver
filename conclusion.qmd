@@ -1,1 +1,7 @@
 # Conclusion
+In 2024, XX% of June and July were safe for swimming.
+Rainfall and cyanobacteria levels were not strongly correlated, suggesting that this relationship may be overexaggerated. 
+
+## Future Work
+- Qualitative research / survey data on what locals think of the water quality and reasons to swim/not swim in the river.
+- Hudson river buoy analysis through Riverkeeper program to expand this analysis.
