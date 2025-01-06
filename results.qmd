@@ -1,15 +1,21 @@
 # Results
+
+#TODO: 
+ - add 2015-2019 and 2022-2023 crbuoy data
+ 
 ## How many days of the year are bacteria levels safe for swimming in the Charles River?
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 if (!require(dplyr)) install.packages("dplyr")
 if (!require(ggplot2)) install.packages("ggplot2")
 if (!require(tidyr)) install.packages("tidyr")
+if (!require(lubridate)) install.packages("lubridate")
 library(dplyr)
 library(ggplot2)
 library(tidyr)
+library(lubridate)
 
-#Load data
+# DAILY 2024
 water2024<-read.csv('./data/crbuoy2024.csv')
 water2024_summary <- water2024 |> 
   select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
@@ -21,12 +27,19 @@ water2024_summary <- water2024 |>
     avg_est_cyano = mean(`est..cyano..cells.ml.`, na.rm = TRUE)
   )
 water2024_summary$date <- as.Date(water2024_summary$date, format = "%m/%d/%Y")
+
+# HOURLY 8-2024
+water2024aughourly<-read.csv('./data/crbuoy2024.csv') |> 
+  select(date, time.edt, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`)
+water2024aughourly$datetime <- mdy_hm(paste(water2024aughourly$date, water2024aughourly$time.edt))
+water2024aughourly$day <- day(water2024aughourly$datetime)
+water2024aughourly$hour <- hour(water2024aughourly$datetime)
 ```
 
 ### Safe-for-Swim Days
 ```{r, message=FALSE, warning=FALSE}
 water2024_summary <- water2024_summary |>
-  mutate(swim_status = if_else(avg_est_cyano < 20000 & avg_temp > 70,
+  mutate(swim_status = if_else(avg_est_cyano < 20000,
                               "Safe to Swim", 
                               "Not Safe to Swim"),
          swim_status = factor(swim_status))
@@ -60,6 +73,7 @@ ggplot(water2024_summary, aes(x = date)) +
 ```
 
 ### Bacteria Levels
+#### Daily
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
@@ -92,7 +106,14 @@ ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
 
+#### Hourly
+```{r}
+
+```
+
 ### Water Temperature
+
+#### Daily
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
@@ -116,15 +137,45 @@ ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   theme_bw() +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
+
+#### Hourly
+```{r}
+
+```
+
+
 ## Is rainfall associated with water quality?
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(ggplot2)) install.packages("ggplot2")
+if (!require(tidyr)) install.packages("tidyr")
+if (!require(lubridate)) install.packages("lubridate")
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+
+# DAILY
 weather2024<-read.csv('./data/weather2024daily.csv')
 weather2024<-weather2024 |> 
   select(datetime,temp,precip)
 weather2024$date<-as.Date(weather2024$datetime, format = "%Y-%m-%d")
+
+# HOURLY
+weather2024aughourly<-read.csv('./data/weather2024hourly.csv')
+weather2024aughourly<-weather2024aughourly |> 
+  select(datetime,temp,precip)
+weather2024aughourly$datetime <- ymd_hms(weather2024aughourly$datetime)
+weather2024aughourly <- weather2024aughourly |>
+  mutate(
+    day = day(datetime),
+    hour = hour(datetime)
+  )
 ```
 
 ### Rain vs. Bacteria Levels
+
+#### Daily
 ```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(scales)
@@ -151,7 +202,14 @@ ggplot(weather_and_water_2024, aes(x = date)) +
 
 ```
 
+#### Hourly
+```{r}
+
+```
+
 ### Precipitation
+
+#### Daily
 ```{r, message=FALSE, warning=FALSE}
 ggplot(weather2024, aes(x = date, y = precip)) +
   geom_col() +
@@ -160,7 +218,14 @@ ggplot(weather2024, aes(x = date, y = precip)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
 ```
 
+#### Hourly
+```{r}
+
+```
+
 ### Air Temperature
+
+#### Daily
 ```{r, message=FALSE, warning=FALSE}
 ggplot(weather2024, aes(x = date, y = temp)) +
   geom_line() +
@@ -169,5 +234,10 @@ ggplot(weather2024, aes(x = date, y = temp)) +
   labs(title = "2024 Boston Air Temperature", x = "Date", y = "Temperature (F)") +
   theme_bw() +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
+```
+
+#### Hourly
+```{r}
+
 ```
 

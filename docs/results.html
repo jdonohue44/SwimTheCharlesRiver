@@ -214,6 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>#TODO: - add 2015-2019 and 2022-2023 crbuoy data</p>
 <section id="how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are bacteria levels safe for swimming in the Charles River?</h2>
 <section id="safe-for-swim-days" class="level3" data-number="3.1.1">
@@ -222,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>water2024_summary <span class="ot">&lt;-</span> water2024_summary <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">swim_status =</span> <span class="fu">if_else</span>(avg_est_cyano <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> avg_temp <span class="sc">&gt;</span> <span class="dv">70</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">swim_status =</span> <span class="fu">if_else</span>(avg_est_cyano <span class="sc">&lt;</span> <span class="dv">20000</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Safe to Swim"</span>, </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Not Safe to Swim"</span>),</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">swim_status =</span> <span class="fu">factor</span>(swim_status))</span>
@@ -265,6 +266,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="bacteria-levels" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="bacteria-levels"><span class="header-section-number">3.1.2</span> Bacteria Levels</h3>
+<section id="daily" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="daily"><span class="header-section-number">3.1.2.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -307,8 +310,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="hourly" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="hourly"><span class="header-section-number">3.1.2.2</span> Hourly</h4>
+</section>
+</section>
 <section id="water-temperature" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">3.1.3</span> Water Temperature</h3>
+<section id="daily-1" class="level4" data-number="3.1.3.1">
+<h4 data-number="3.1.3.1" class="anchored" data-anchor-id="daily-1"><span class="header-section-number">3.1.3.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -337,17 +346,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="hourly-1" class="level4" data-number="3.1.3.2">
+<h4 data-number="3.1.3.2" class="anchored" data-anchor-id="hourly-1"><span class="header-section-number">3.1.3.2</span> Hourly</h4>
+</section>
 </section>
 </section>
 <section id="is-rainfall-associated-with-water-quality" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</h2>
 <section id="rain-vs.-bacteria-levels" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="rain-vs.-bacteria-levels"><span class="header-section-number">3.2.1</span> Rain vs.&nbsp;Bacteria Levels</h3>
+<section id="daily-2" class="level4" data-number="3.2.1.1">
+<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="daily-2"><span class="header-section-number">3.2.1.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -377,14 +392,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
+<section id="hourly-2" class="level4" data-number="3.2.1.2">
+<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="hourly-2"><span class="header-section-number">3.2.1.2</span> Hourly</h4>
+</section>
+</section>
 <section id="precipitation" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">3.2.2</span> Precipitation</h3>
+<section id="daily-3" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="daily-3"><span class="header-section-number">3.2.2.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -397,14 +418,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
+<section id="hourly-3" class="level4" data-number="3.2.2.2">
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="hourly-3"><span class="header-section-number">3.2.2.2</span> Hourly</h4>
+</section>
+</section>
 <section id="air-temperature" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="air-temperature"><span class="header-section-number">3.2.3</span> Air Temperature</h3>
+<section id="daily-4" class="level4" data-number="3.2.3.1">
+<h4 data-number="3.2.3.1" class="anchored" data-anchor-id="daily-4"><span class="header-section-number">3.2.3.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -419,13 +446,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="hourly-4" class="level4" data-number="3.2.3.2">
+<h4 data-number="3.2.3.2" class="anchored" data-anchor-id="hourly-4"><span class="header-section-number">3.2.3.2</span> Hourly</h4>
 
 
+</section>
 </section>
 </section>
 

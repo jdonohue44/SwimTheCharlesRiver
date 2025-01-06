@@ -143,9 +143,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-sources-used-for-this-analysis" id="toc-data-sources-used-for-this-analysis" class="nav-link active" data-scroll-target="#data-sources-used-for-this-analysis"><span class="header-section-number">2.1</span> Data Sources used for this Analysis</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link active" data-scroll-target="#data-sources"><span class="header-section-number">2.1</span> Data Sources</a></li>
   <li><a href="#missing-data-analysis" id="toc-missing-data-analysis" class="nav-link" data-scroll-target="#missing-data-analysis"><span class="header-section-number">2.2</span> Missing Data Analysis</a></li>
-  <li><a href="#additional-data-resources" id="toc-additional-data-resources" class="nav-link" data-scroll-target="#additional-data-resources"><span class="header-section-number">2.3</span> Additional Data Resources</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/edit/main/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -171,30 +170,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-sources-used-for-this-analysis" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="data-sources-used-for-this-analysis"><span class="header-section-number">2.1</span> Data Sources used for this Analysis</h2>
+<section id="data-sources" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">2.1</span> Data Sources</h2>
 <ul>
-<li><strong><a href="https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river">EPA Live Water Quality Data</a></strong>: Real-time water quality metrics.</li>
-<li><strong><a href="https://www.visualcrossing.com/weather/weather-data-services">Visual Crossing Weather Data Services</a></strong>: Rainfall data for Boston.</li>
+<li><a href="https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river">Water Quality Buoy placed in the Lower Charles River (2015-2024)</a>: Every 15 minutes, this self-contained solar powered buoy takes measurements for temperature, dissolved oxygen, pH, specific conductance, turbidity, chlorophyll, and phycocyanin. The sensors on the buoy are located 1 meter below the water’s surface. The data are transmitted in real-time using telemetry for remote access. The data from this buoy is used to assess water quality conditions and to help track cyanobacteria (blue-green algae) blooms.</li>
+<li><a href="https://www.visualcrossing.com/weather/weather-data-services">Visual Crossing Historical Weather Data API (2024)</a>: Visual Crossing is a provider of weather data and enterprise analysis tools to data scientists, business analysts, professionals, and academics. Founded in 2003, this weather data API leads the industry by providing the lowest-cost access to all types of historical weather data, weather forecasts, climate summaries, and historical weather forecasts.</li>
 </ul>
 </section>
 <section id="missing-data-analysis" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="missing-data-analysis"><span class="header-section-number">2.2</span> Missing Data Analysis</h2>
 <ul>
-<li>Charles River Buoy data available from 2015-2019, 2022-2024. Covid years are missing data (2020-2021).</li>
-<li>Weather data only available for small time ranges without paid subscription.
+<li>Covid years are missing water buoy data (2020-2021).</li>
+<li>In order to stay within free-tier usage, only historical weather data from the following time ranges were downloaded from Visual Crossing:
 <ul>
-<li>Obtained daily for 2024.</li>
-<li>Obtained hourly for August, 2024.</li>
+<li>2024 (daily)</li>
+<li>August, 2024 (hourly)</li>
 </ul></li>
-</ul>
-</section>
-<section id="additional-data-resources" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="additional-data-resources"><span class="header-section-number">2.3</span> Additional Data Resources</h2>
-<ul>
-<li><strong><a href="https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy">EPA Charles River Buoy Information</a></strong>: Additional context on water quality monitoring.</li>
-<li><strong><a href="https://www.savetheharbor.org/reportcard">Save The Harbor Report Card</a></strong>: Annual assessments of the harbor’s health.</li>
-<li><strong><a href="https://www.crwa.org/water-quality-data">Charles River Watershed Association Water Quality Data</a></strong>: Historical water quality data.</li>
 </ul>
 
 

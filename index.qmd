@@ -1,20 +1,6 @@
 # Introduction
 
-Making urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York:
-
- - [Charles River Swimming Club](https://www.charlesriverswimmingclub.org/)
- - [Charles River Swim Park Project](https://thecharles.org/swim-park-project/)
- - [Plus Pool](https://pluspool.com/pool/design/)
- - [River Keeper](https://www.riverkeeper.org/)
+Making urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
  
-*But why aren't more people swimming in urban waters to begin with?* This project seeks to analyze the water quality of Boston's Charles River to identify the number of safe swimming days throughout the year. Our hypothesis is that the number of safe swimming days is higher than people realize, and that they would consider swimming more often if they were aware of this fact. Qualitative research would be beneficial to understand the top deterrents for swimming in the Charles river, with the aim of removing barriers to entry.
+To support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston's Charles River to identify the number of safe swimming days throughout the year. Additionally, it explores the correlation between rainfall and cyanobacteria, a common deterrent for open water swimming.
 
-Additionally, this analysis explores the correlation between rainfall in Boston and bacteria levels—a known deterrent for open water swimmers. 
-
-Understanding the safety of the Charles River for swimming supports the vision of urban rivers as vibrant, accessible recreational spaces. By identifying safe swimming days and understanding the impact of rainfall on water quality, this project aims to provide valuable insights for urban swimmers and policymakers to regain access to a valuable recreational resource: urban waters.
-
-# Methodology
-
-1. **Data Collection and Pre-processing**: Gather and clean data from Charles River buoy and historical weather data.
-2. **Exploratory Data Analysis**: Investigate the number of days where bacteria levels are withing safe range, and if rainy days are clustered with unsafe bacteria levels.
-3. **Visualization**: Create clear visualizations to communicate 1) the number of safe-for-swim days, and 2) the relationship of rain to water quality.
