@@ -1,5 +1,7 @@
 # Data
 
+![Charles River Water Quality Buoy](./img/crbuoy.jpg){width="25%" fig-align="left"}
+
 ## Data Sources
 
 - [Water Quality Buoy placed in the Lower Charles River (2015-2024)](https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river): Every 15 minutes, this self-contained solar powered buoy takes measurements for temperature, dissolved oxygen, pH, specific conductance, turbidity, chlorophyll, and phycocyanin. The sensors on the buoy are located 1 meter below the water's surface. The data are transmitted in real-time using telemetry for remote access. The data from this buoy is used to assess water quality conditions and to help track cyanobacteria (blue-green algae) blooms.
@@ -7,6 +9,7 @@
 
 ## Missing Data Analysis
 
+- No data on Sewage Contamination from Human Fecal Matter (e.g. Enterococci samples).
 - Covid years are missing water buoy data (2020-2021).
 - In order to stay within free-tier usage, only historical weather data from the following time ranges were downloaded from Visual Crossing: 
   - 2024 (daily)

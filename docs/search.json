@@ -4,7 +4,27 @@
     "href": "index.html",
     "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
     "section": "",
-    "text": "1 Introduction\nMaking urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: Boston Charles River Swimming Club, Boston Charles River Swim Park Project, New York East River Plus Pool, and New York Hudson River Keeper.\nTo support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston’s Charles River to identify the number of safe swimming days throughout the year. Additionally, it explores the correlation between rainfall and cyanobacteria, a common deterrent for open water swimming.",
+    "text": "1 Introduction\nMaking urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: Boston Charles River Swimming Club, Boston Charles River Swim Park Project, Boston City Splash, New York East River Plus Pool, and New York Hudson River Keeper.\nTo support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston’s Charles River to help identify the number of safe swimming days throughout the year.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#algal-blooms",
+    "href": "index.html#algal-blooms",
+    "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
+    "section": "2.1 Algal Blooms",
+    "text": "2.1 Algal Blooms\n\nCyanobacteria (this analysis): Often referred to as blue-green algae, certain species can produce toxins harmful to humans.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#sewage-contamination-from-human-fecal-matter",
+    "href": "index.html#sewage-contamination-from-human-fecal-matter",
+    "title": "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River",
+    "section": "2.2 Sewage Contamination from Human Fecal Matter",
+    "text": "2.2 Sewage Contamination from Human Fecal Matter\n\nEnterococci: High levels of these bacteria indicate fecal contamination and are associated with an increased risk of illness from water-contact activities.\nEscherichia coli (E. coli): Often found in urban waters due to sewage contamination, E. coli can cause gastrointestinal illness.\nShigella: This bacteria family can be spread through fecal contamination and cause gastrointestinal illnesses.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -34,7 +54,7 @@
     "href": "data.html#missing-data-analysis",
     "title": "2  Data",
     "section": "2.2 Missing Data Analysis",
-    "text": "2.2 Missing Data Analysis\n\nCovid years are missing water buoy data (2020-2021).\nIn order to stay within free-tier usage, only historical weather data from the following time ranges were downloaded from Visual Crossing:\n\n2024 (daily)\nAugust, 2024 (hourly)",
+    "text": "2.2 Missing Data Analysis\n\nNo data on Sewage Contamination from Human Fecal Matter (e.g. Enterococci samples).\nCovid years are missing water buoy data (2020-2021).\nIn order to stay within free-tier usage, only historical weather data from the following time ranges were downloaded from Visual Crossing:\n\n2024 (daily)\nAugust, 2024 (hourly)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]
@@ -84,7 +104,7 @@
     "href": "conclusion.html#future-work",
     "title": "4  Conclusion",
     "section": "",
-    "text": "Add Enterococci monitoring to the Charles River buoy. Enterococci are an EPA-approved fecal contamination indicator useful for detecting the presence of disease-causing bacteria, viruses, and protozoa. These pathogens can sicken swimmers and others who use rivers and streams for recreation or eat raw shellfish or fish. Other potential health effects can include diseases of the skin, eyes, ears and respiratory tract. Eating fish or shellfish harvested from waters with fecal contamination can also result in human illness.\nAnalyze the Hudson river estuary data samples provided by the River Keeper program. Hudson River Estuary Data.\nConduct a qualitative research survey to learn: 1/what urban swimmers think of their local urban river water quality, and 2/top deterrents for swimming in local urban waters more often.",
+    "text": "Conduct a qualitative research survey on urban swimmers to learn: 1/what urban swimmers think of their local urban river water quality, and 2/top deterrents for swimming in local urban waters more often.\nAdd fecal matter monitoring to the Charles River buoy. Certain microorganisms found in fecal matter (e.g. enterococci) are an EPA-approved fecal contamination indicator useful for detecting the presence of disease-causing bacteria, viruses, and protozoa. These pathogens can sicken swimmers and others who use rivers and streams for recreation or eat raw shellfish or fish. Other potential health effects can include diseases of the skin, eyes, ears and respiratory tract. Eating fish or shellfish harvested from waters with fecal contamination can also result in human illness.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusion</span>"
     ]
@@ -94,7 +114,7 @@
     "href": "conclusion.html#further-reading",
     "title": "4  Conclusion",
     "section": "4.2 Further Reading",
-    "text": "4.2 Further Reading\n\nSensor-based detection of algal blooms for public health advisories and long-term monitoring\nCharles River Conservancy Swim Park Project / Urban River Swimming: Six American Initiatives\nEPA Charles River Buoy Information\nRiver Keeper Testing Methodology\nSave The Boston Harbor Report Card\nCharles River Watershed Association Water Quality Data",
+    "text": "4.2 Further Reading\n\nSensor-based detection of algal blooms for public health advisories and long-term monitoring\nCharles River Conservancy Swim Park Project / Urban River Swimming: Six American Initiatives\nEPA Charles River Buoy Information\nRiver Keeper Testing Methodology\nHudson River Estuary Data.\nSave The Boston Harbor Report Card\nCharles River Watershed Association Water Quality Data\nCDC Harmful Algal Blooms\n\n\n\n\nComplexities of the Urban Water Ecosystem",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusion</span>"
     ]

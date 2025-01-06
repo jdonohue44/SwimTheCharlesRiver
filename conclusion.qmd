@@ -4,14 +4,19 @@ In 2024, XX% of June and July days were safe for swimming based on cyanobacteria
 However, the Charles River buoy does not currently monitor fecal bacteria levels (e.g. Enterococci) and wet weather is a known trigger of fecal contamination which can make water unsafe for swimming. Further analysis on enterococci levels is needed before advising on swim water safety in the Charles River.
 
 ## Future Work
-- Add Enterococci monitoring to the Charles River buoy. Enterococci are an EPA-approved fecal contamination indicator useful for detecting the presence of disease-causing bacteria, viruses, and protozoa. These pathogens can sicken swimmers and others who use rivers and streams for recreation or eat raw shellfish or fish. Other potential health effects can include diseases of the skin, eyes, ears and respiratory tract. Eating fish or shellfish harvested from waters with fecal contamination can also result in human illness.
-- Analyze the Hudson river estuary data samples provided by the River Keeper program. [Hudson River Estuary Data](https://data.riverkeeper.org/water-quality/hudson-river/).
-- Conduct a qualitative research survey to learn: 1/what urban swimmers think of their local urban river water quality, and 2/top deterrents for swimming in local urban waters more often.
+1. **Conduct a qualitative research survey on urban swimmers** to learn: 1/what urban swimmers think of their local urban river water quality, and 2/top deterrents for swimming in local urban waters more often.
+2. **Add fecal matter monitoring to the Charles River buoy.** Certain microorganisms found in fecal matter (e.g. enterococci) are an EPA-approved fecal contamination indicator useful for detecting the presence of disease-causing bacteria, viruses, and protozoa. These pathogens can sicken swimmers and others who use rivers and streams for recreation or eat raw shellfish or fish. Other potential health effects can include diseases of the skin, eyes, ears and respiratory tract. Eating fish or shellfish harvested from waters with fecal contamination can also result in human illness.
+
 
 ## Further Reading
 - [Sensor-based detection of algal blooms for public health advisories and long-term monitoring](https://pmc.ncbi.nlm.nih.gov/articles/PMC9562998/)
 - [Charles River Conservancy Swim Park Project / Urban River Swimming: Six American Initiatives](https://www.thecharles.org/wp-content/uploads/2019/07/Tufts-Urban-River-Swimming-Report.pdf)
 - [EPA Charles River Buoy Information](https://www.epa.gov/charlesriver/basic-information-about-charles-river-buoy)
 - [River Keeper Testing Methodology](https://data.riverkeeper.org/water-quality/testing/what/)
+- [Hudson River Estuary Data](https://data.riverkeeper.org/water-quality/hudson-river/).
 - [Save The Boston Harbor Report Card](https://www.savetheharbor.org/reportcard)
 - [Charles River Watershed Association Water Quality Data](https://www.crwa.org/water-quality-data)
+- [CDC Harmful Algal Blooms](https://www.cdc.gov/harmful-algal-blooms/hcp/clinical-signs/symptoms-freshwater-harmful-algal-blooms.html)
+
+
+![Complexities of the Urban Water Ecosystem](./img/ecosystem.png){width="100%" fig-align="center"}

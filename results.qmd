@@ -1,7 +1,4 @@
 # Results
-
-#TODO: 
- - add 2015-2019 and 2022-2023 crbuoy data
  
 ## How many days of the year are bacteria levels safe for swimming in the Charles River?
 

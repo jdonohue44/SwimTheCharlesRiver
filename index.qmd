@@ -1,6 +1,21 @@
 # Introduction
 
-Making urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
+Making urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [Boston City Splash](https://thecharles.org/city-splash/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
  
-To support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston's Charles River to identify the number of safe swimming days throughout the year. Additionally, it explores the correlation between rainfall and cyanobacteria, a common deterrent for open water swimming.
+To support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston's Charles River to help identify the number of safe swimming days throughout the year. 
 
+![Boston Charles River, City Splash 2024](./img/citysplash2024.jpg){width="100%" fig-align="center"}
+
+# Top Biological Risks with Urban Open Water Swimming
+
+Overexposure to cyanobacteria or fecal microorganisms coming from sewage runoff can lead to gastroenteritis, infections, dysentery, and other medical risks.
+
+## Algal Blooms
+
+1. **Cyanobacteria (this analysis)**: Often referred to as blue-green algae, certain species can produce toxins harmful to humans.
+
+## Sewage Contamination from Human Fecal Matter
+
+1. **Enterococci**: High levels of these bacteria indicate fecal contamination and are associated with an increased risk of illness from water-contact activities.
+2. **Escherichia coli (E. coli)**: Often found in urban waters due to sewage contamination, E. coli can cause gastrointestinal illness.
+3. **Shigella**: This bacteria family can be spread through fecal contamination and cause gastrointestinal illnesses.
