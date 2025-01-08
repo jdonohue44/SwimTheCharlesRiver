@@ -1,12 +1,9 @@
 # Results
  
-## How many days of the year are bacteria levels safe for swimming in the Charles River?
+## How many days of the year are cyanobacteria levels safe for swimming in the Charles River?
+In 2024, there were 51 safe-for-swim days (34%) between May and October based on cyanobacteria levels.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-if (!require(dplyr)) install.packages("dplyr")
-if (!require(ggplot2)) install.packages("ggplot2")
-if (!require(tidyr)) install.packages("tidyr")
-if (!require(lubridate)) install.packages("lubridate")
 library(dplyr)
 library(ggplot2)
 library(tidyr)
@@ -33,7 +30,6 @@ water2024aughourly$day <- day(water2024aughourly$datetime)
 water2024aughourly$hour <- hour(water2024aughourly$datetime)
 ```
 
-### Safe-for-Swim Days
 ```{r, message=FALSE, warning=FALSE}
 water2024_summary <- water2024_summary |>
   mutate(swim_status = if_else(avg_est_cyano < 20000,
@@ -69,8 +65,9 @@ ggplot(water2024_summary, aes(x = date)) +
   scale_x_date(date_labels = "%B", date_breaks = "1 month")
 ```
 
-### Bacteria Levels
-#### Daily
+### Estimated Cyanobacteria Levels
+Cyanobacteria levels increased throughout the course of the summer, suggesting that it is safer to swim in the earlier months of the season, like May and June.
+
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
@@ -78,7 +75,7 @@ ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
             fill = "lightgreen", alpha = 0.05) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
                 ymin = 20000, ymax = 70000), 
-            fill = "lightyellow", alpha = 0.05) +
+            fill = "yellow", alpha = 0.05) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
                 ymin = 70000, ymax = Inf), 
             fill = "pink", alpha = 0.05) +
@@ -103,14 +100,9 @@ ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
 
-#### Hourly
-```{r}
-
-```
-
 ### Water Temperature
+Another simple factor affecting a swimmer's decision to enter urban waters is the water temperature. Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.
 
-#### Daily
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
@@ -124,9 +116,9 @@ ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   geom_hline(yintercept = 60, linetype = "dashed", color = "blue") +
   geom_hline(yintercept = 50, linetype = "dashed", color = "lightblue") +
   annotate("text", x = min(water2024_summary$date), y = 61, 
-           label = "2-3mm Wetsuit", hjust = 0) +
+           label = "2-3mm wetsuit recommended", hjust = 0) +
   annotate("text", x = min(water2024_summary$date), y = 51, 
-           label = "4-5mm Wetsuit", hjust = 0) +
+           label = "4-5mm wetsuit recommended", hjust = 0) +
   scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +
   labs(title = "2024 Charles River Water Temperature", 
        x = "Date", 
@@ -135,18 +127,9 @@ ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
 
-#### Hourly
-```{r}
-
-```
-
-
 ## Is rainfall associated with water quality?
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-if (!require(dplyr)) install.packages("dplyr")
-if (!require(ggplot2)) install.packages("ggplot2")
-if (!require(tidyr)) install.packages("tidyr")
-if (!require(lubridate)) install.packages("lubridate")
 library(dplyr)
 library(ggplot2)
 library(tidyr)
@@ -170,9 +153,6 @@ weather2024aughourly <- weather2024aughourly |>
   )
 ```
 
-### Rain vs. Bacteria Levels
-
-#### Daily
 ```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(scales)
@@ -198,43 +178,47 @@ ggplot(weather_and_water_2024, aes(x = date)) +
         axis.title.y.left = element_text(color = "blue"))
 
 ```
-
-#### Hourly
 ```{r}
+cor(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "pearson", use = "complete.obs")
+
+plot(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano,
+     main = "Correlation between Precipitation and Avg Est. Cyanobacteria",
+     xlab = "Precipitation (inches)", ylab = "Avg Estimated Cyanobacteria",
+     pch = 19)
 
 ```
 
-### Precipitation
 
-#### Daily
-```{r, message=FALSE, warning=FALSE}
-ggplot(weather2024, aes(x = date, y = precip)) +
-  geom_col() +
-  labs(title = "2024 Boston Precipitation", x = "Date", y = "Precipitation (inches)") +
-  theme_bw() +
-  scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
-```
-
-#### Hourly
 ```{r}
+# Lag precipitation by 1, 2, and 3 days
+weather_and_water_2024$lag_1_precip <- lag(weather_and_water_2024$precip, n = 1)
+weather_and_water_2024$lag_2_precip <- lag(weather_and_water_2024$precip, n = 2)
+weather_and_water_2024$lag_3_precip <- lag(weather_and_water_2024$precip, n = 3)
 
+# Calculate Spearman correlations for different lags
+cor_1_spearman <- cor(weather_and_water_2024$lag_1_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+cor_2_spearman <- cor(weather_and_water_2024$lag_2_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+cor_3_spearman <- cor(weather_and_water_2024$lag_3_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+
+# Print Spearman correlations for each lag
+print(paste("Spearman correlation with 1-day lag:", cor_1_spearman))
+print(paste("Spearman correlation with 2-day lag:", cor_2_spearman))
+print(paste("Spearman correlation with 3-day lag:", cor_3_spearman))
 ```
-
-### Air Temperature
-
-#### Daily
-```{r, message=FALSE, warning=FALSE}
-ggplot(weather2024, aes(x = date, y = temp)) +
-  geom_line() +
-  geom_point() +
-  scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +
-  labs(title = "2024 Boston Air Temperature", x = "Date", y = "Temperature (F)") +
-  theme_bw() +
-  scale_x_date(date_labels = "%b %d", date_breaks = "15 day") 
-```
-
-#### Hourly
 ```{r}
+# Create a vector for lag values
+lags <- c(1, 2, 3)
+
+# Store the Spearman correlation results for each lag
+spearman_correlations <- c(cor_1_spearman, cor_2_spearman, cor_3_spearman)
+
+# Plot the Spearman correlation against lag time
+plot(lags, spearman_correlations, type = "o", 
+     main = "Spearman Lagged Correlation between Precipitation and Avg Est. Cyanobacteria",
+     xlab = "Lag (days)", ylab = "Spearman Correlation",
+     pch = 19, col = "blue")
 
 ```
+
+
 

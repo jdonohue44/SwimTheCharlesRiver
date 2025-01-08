@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Results – Swim the Charles River: Analyzing Safe-for-Swim Days in Boston's Charles River</title>
+<title>Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River - 3&nbsp; Results</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -112,13 +112,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -177,18 +177,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river" id="toc-how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river" class="nav-link active" data-scroll-target="#how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are bacteria levels safe for swimming in the Charles River?</a>
+  <li><a href="#how-many-days-of-the-year-are-cyanobacteria-levels-safe-for-swimming-in-the-charles-river" id="toc-how-many-days-of-the-year-are-cyanobacteria-levels-safe-for-swimming-in-the-charles-river" class="nav-link active" data-scroll-target="#how-many-days-of-the-year-are-cyanobacteria-levels-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are cyanobacteria levels safe for swimming in the Charles River?</a>
   <ul class="collapse">
-  <li><a href="#safe-for-swim-days" id="toc-safe-for-swim-days" class="nav-link" data-scroll-target="#safe-for-swim-days"><span class="header-section-number">3.1.1</span> Safe-for-Swim Days</a></li>
-  <li><a href="#bacteria-levels" id="toc-bacteria-levels" class="nav-link" data-scroll-target="#bacteria-levels"><span class="header-section-number">3.1.2</span> Bacteria Levels</a></li>
-  <li><a href="#water-temperature" id="toc-water-temperature" class="nav-link" data-scroll-target="#water-temperature"><span class="header-section-number">3.1.3</span> Water Temperature</a></li>
+  <li><a href="#estimated-cyanobacteria-levels" id="toc-estimated-cyanobacteria-levels" class="nav-link" data-scroll-target="#estimated-cyanobacteria-levels"><span class="header-section-number">3.1.1</span> Estimated Cyanobacteria Levels</a></li>
+  <li><a href="#water-temperature" id="toc-water-temperature" class="nav-link" data-scroll-target="#water-temperature"><span class="header-section-number">3.1.2</span> Water Temperature</a></li>
   </ul></li>
-  <li><a href="#is-rainfall-associated-with-water-quality" id="toc-is-rainfall-associated-with-water-quality" class="nav-link" data-scroll-target="#is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</a>
-  <ul class="collapse">
-  <li><a href="#rain-vs.-bacteria-levels" id="toc-rain-vs.-bacteria-levels" class="nav-link" data-scroll-target="#rain-vs.-bacteria-levels"><span class="header-section-number">3.2.1</span> Rain vs.&nbsp;Bacteria Levels</a></li>
-  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">3.2.2</span> Precipitation</a></li>
-  <li><a href="#air-temperature" id="toc-air-temperature" class="nav-link" data-scroll-target="#air-temperature"><span class="header-section-number">3.2.3</span> Air Temperature</a></li>
-  </ul></li>
+  <li><a href="#is-rainfall-associated-with-water-quality" id="toc-is-rainfall-associated-with-water-quality" class="nav-link" data-scroll-target="#is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -214,10 +208,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="how-many-days-of-the-year-are-bacteria-levels-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are bacteria levels safe for swimming in the Charles River?</h2>
-<section id="safe-for-swim-days" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="safe-for-swim-days"><span class="header-section-number">3.1.1</span> Safe-for-Swim Days</h3>
+<section id="how-many-days-of-the-year-are-cyanobacteria-levels-safe-for-swimming-in-the-charles-river" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="how-many-days-of-the-year-are-cyanobacteria-levels-safe-for-swimming-in-the-charles-river"><span class="header-section-number">3.1</span> How many days of the year are cyanobacteria levels safe for swimming in the Charles River?</h2>
+<p>In 2024, there were 51 safe-for-swim days (34%) between May and October based on cyanobacteria levels.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -262,11 +255,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="bacteria-levels" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="bacteria-levels"><span class="header-section-number">3.1.2</span> Bacteria Levels</h3>
-<section id="daily" class="level4" data-number="3.1.2.1">
-<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="daily"><span class="header-section-number">3.1.2.1</span> Daily</h4>
+<section id="estimated-cyanobacteria-levels" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="estimated-cyanobacteria-levels"><span class="header-section-number">3.1.1</span> Estimated Cyanobacteria Levels</h3>
+<p>Cyanobacteria levels increased throughout the course of the summer, suggesting that it is safer to swim in the earlier months of the season, like May and June.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -276,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">min</span>(date), <span class="at">xmax =</span> <span class="fu">max</span>(date), </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> <span class="dv">20000</span>, <span class="at">ymax =</span> <span class="dv">70000</span>), </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"lightyellow"</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"yellow"</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">min</span>(date), <span class="at">xmax =</span> <span class="fu">max</span>(date), </span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> <span class="dv">70000</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>), </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
@@ -309,14 +300,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="hourly" class="level4" data-number="3.1.2.2">
-<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="hourly"><span class="header-section-number">3.1.2.2</span> Hourly</h4>
-</section>
-</section>
-<section id="water-temperature" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">3.1.3</span> Water Temperature</h3>
-<section id="daily-1" class="level4" data-number="3.1.3.1">
-<h4 data-number="3.1.3.1" class="anchored" data-anchor-id="daily-1"><span class="header-section-number">3.1.3.1</span> Daily</h4>
+<section id="water-temperature" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">3.1.2</span> Water Temperature</h3>
+<p>Another simple factor affecting a swimmer’s decision to enter urban waters is the water temperature. Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -332,9 +318,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">60</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">50</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">min</span>(water2024_summary<span class="sc">$</span>date), <span class="at">y =</span> <span class="dv">61</span>, </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"2-3mm Wetsuit"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"2-3mm wetsuit recommended"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">min</span>(water2024_summary<span class="sc">$</span>date), <span class="at">y =</span> <span class="dv">51</span>, </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"4-5mm Wetsuit"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"4-5mm wetsuit recommended"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(water2024_summary<span class="sc">$</span>avg_temp), <span class="at">by =</span> <span class="dv">5</span>)) <span class="sc">+</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2024 Charles River Water Temperature"</span>, </span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, </span>
@@ -345,23 +331,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="hourly-1" class="level4" data-number="3.1.3.2">
-<h4 data-number="3.1.3.2" class="anchored" data-anchor-id="hourly-1"><span class="header-section-number">3.1.3.2</span> Hourly</h4>
-</section>
-</section>
 </section>
 <section id="is-rainfall-associated-with-water-quality" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="is-rainfall-associated-with-water-quality"><span class="header-section-number">3.2</span> Is rainfall associated with water quality?</h2>
-<section id="rain-vs.-bacteria-levels" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="rain-vs.-bacteria-levels"><span class="header-section-number">3.2.1</span> Rain vs.&nbsp;Bacteria Levels</h3>
-<section id="daily-2" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="daily-2"><span class="header-section-number">3.2.1.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -391,72 +369,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="hourly-2" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="hourly-2"><span class="header-section-number">3.2.1.2</span> Hourly</h4>
-</section>
-</section>
-<section id="precipitation" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">3.2.2</span> Precipitation</h3>
-<section id="daily-3" class="level4" data-number="3.2.2.1">
-<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="daily-3"><span class="header-section-number">3.2.2.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather2024, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> precip)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2024 Boston Precipitation"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Precipitation (inches)"</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %d"</span>, <span class="at">date_breaks =</span> <span class="st">"15 day"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(weather_and_water_2024<span class="sc">$</span>precip, weather_and_water_2024<span class="sc">$</span>avg_est_cyano, <span class="at">method =</span> <span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.134533</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weather_and_water_2024<span class="sc">$</span>precip, weather_and_water_2024<span class="sc">$</span>avg_est_cyano,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Correlation between Precipitation and Avg Est. Cyanobacteria"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Precipitation (inches)"</span>, <span class="at">ylab =</span> <span class="st">"Avg Estimated Cyanobacteria"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="hourly-3" class="level4" data-number="3.2.2.2">
-<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="hourly-3"><span class="header-section-number">3.2.2.2</span> Hourly</h4>
-</section>
-</section>
-<section id="air-temperature" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="air-temperature"><span class="header-section-number">3.2.3</span> Air Temperature</h3>
-<section id="daily-4" class="level4" data-number="3.2.3.1">
-<h4 data-number="3.2.3.1" class="anchored" data-anchor-id="daily-4"><span class="header-section-number">3.2.3.1</span> Daily</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(weather2024, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(water2024_summary<span class="sc">$</span>avg_temp), <span class="at">by =</span> <span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2024 Boston Air Temperature"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Temperature (F)"</span>) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %d"</span>, <span class="at">date_breaks =</span> <span class="st">"15 day"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lag precipitation by 1, 2, and 3 days</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>weather_and_water_2024<span class="sc">$</span>lag_1_precip <span class="ot">&lt;-</span> <span class="fu">lag</span>(weather_and_water_2024<span class="sc">$</span>precip, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>weather_and_water_2024<span class="sc">$</span>lag_2_precip <span class="ot">&lt;-</span> <span class="fu">lag</span>(weather_and_water_2024<span class="sc">$</span>precip, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>weather_and_water_2024<span class="sc">$</span>lag_3_precip <span class="ot">&lt;-</span> <span class="fu">lag</span>(weather_and_water_2024<span class="sc">$</span>precip, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Spearman correlations for different lags</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>cor_1_spearman <span class="ot">&lt;-</span> <span class="fu">cor</span>(weather_and_water_2024<span class="sc">$</span>lag_1_precip, weather_and_water_2024<span class="sc">$</span>avg_est_cyano, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>cor_2_spearman <span class="ot">&lt;-</span> <span class="fu">cor</span>(weather_and_water_2024<span class="sc">$</span>lag_2_precip, weather_and_water_2024<span class="sc">$</span>avg_est_cyano, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>cor_3_spearman <span class="ot">&lt;-</span> <span class="fu">cor</span>(weather_and_water_2024<span class="sc">$</span>lag_3_precip, weather_and_water_2024<span class="sc">$</span>avg_est_cyano, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print Spearman correlations for each lag</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Spearman correlation with 1-day lag:"</span>, cor_1_spearman))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Spearman correlation with 1-day lag: -0.267651987896896"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Spearman correlation with 2-day lag:"</span>, cor_2_spearman))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Spearman correlation with 2-day lag: -0.240569202230453"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Spearman correlation with 3-day lag:"</span>, cor_3_spearman))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Spearman correlation with 3-day lag: -0.222522482101012"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector for lag values</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lags <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the Spearman correlation results for each lag</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>spearman_correlations <span class="ot">&lt;-</span> <span class="fu">c</span>(cor_1_spearman, cor_2_spearman, cor_3_spearman)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Spearman correlation against lag time</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lags, spearman_correlations, <span class="at">type =</span> <span class="st">"o"</span>, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Spearman Lagged Correlation between Precipitation and Avg Est. Cyanobacteria"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Lag (days)"</span>, <span class="at">ylab =</span> <span class="st">"Spearman Correlation"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="hourly-4" class="level4" data-number="3.2.3.2">
-<h4 data-number="3.2.3.2" class="anchored" data-anchor-id="hourly-4"><span class="header-section-number">3.2.3.2</span> Hourly</h4>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -495,7 +494,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -527,29 +537,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -557,7 +545,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

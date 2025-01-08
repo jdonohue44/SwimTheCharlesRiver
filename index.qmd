@@ -1,21 +1,32 @@
 # Introduction
 
-Making urban waters more accessible to swimmers is a growing trend, with several initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [Boston City Splash](https://thecharles.org/city-splash/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
+The movement to make urban waterways more accessible to swimmers is gaining momentum, with various initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [Boston City Splash](https://thecharles.org/city-splash/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
  
-To support the revitalization of urban rivers as recreational spaces, this report analyzes cyanobacteria levels in Boston's Charles River to help identify the number of safe swimming days throughout the year. 
+In support of the revitalization of urban rivers as swimming destinations, this report focuses on the analysis of cyanobacteria levels in Boston’s Charles River. By assessing these levels, we aim to estimate the number of safe swimming days throughout the year. However, cyanobacteria concentration alone cannot fully determine water quality for swimming. A more holistic assessment, including sewage contamination data and further environmental analysis, is essential to ensure public safety.
 
 ![Boston Charles River, City Splash 2024](./img/citysplash2024.jpg){width="100%" fig-align="center"}
 
-# Top Biological Risks with Urban Open Water Swimming
+# Biological risks associated with swimming in urban waters
 
-Overexposure to cyanobacteria or fecal microorganisms coming from sewage runoff can lead to gastroenteritis, infections, dysentery, and other medical risks.
+## Harmful Algal Blooms (HABs) -- focus of this analysis
+Harmful Algal Blooms (HABs) occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of HAB is cyanobacteria, also known as blue-green algae. Cyanobacteria levels are the focus of this analysis.
 
-## Algal Blooms
+In the Charles River in Boston, key sources of Harmful Algal Blooms (HABs) include:
 
-1. **Cyanobacteria (this analysis)**: Often referred to as blue-green algae, certain species can produce toxins harmful to humans.
+- **Wastewater treatment plants**: Effluent from treatment facilities can introduce excess nitrogen and phosphorus into the river.
+- **Stormwater runoff**: Rainwater washes nutrients, such as fertilizers and pollutants, from streets, lawns, and impervious surfaces into the river.
+- **Sewage overflows**: Combined sewer overflows (CSOs) during heavy rainfall can discharge untreated sewage, which adds nutrients to the river.
+- **Urban and industrial runoff**: Water from urban areas and industrial sites may contain nutrients that fuel algae growth.
+- **Nutrient-rich rainfall**: Increased nitrogen and phosphorus from rainfall can exacerbate nutrient loading in the river.
 
-## Sewage Contamination from Human Fecal Matter
+These sources contribute to the nutrient imbalances that promote the growth of cyanobacteria and other harmful algal species, leading to potential health risks for humans and aquatic life.
 
-1. **Enterococci**: High levels of these bacteria indicate fecal contamination and are associated with an increased risk of illness from water-contact activities.
-2. **Escherichia coli (E. coli)**: Often found in urban waters due to sewage contamination, E. coli can cause gastrointestinal illness.
-3. **Shigella**: This bacteria family can be spread through fecal contamination and cause gastrointestinal illnesses.
+## Sewage contamination from human fecal matter -- data not available
+Sewage contamination in urban waters occurs when untreated or poorly treated sewage, containing human waste, enters rivers, lakes, and other water bodies. This can lead to health risks for humans and aquatic life due to harmful pathogens like **Enterococci** and **E. coli**. Common sources include leaks, combined sewer overflows (CSOs), and improper disposal.
+
+Key sources of contamination:
+
+- **Combined sewer overflows (CSOs)**: Heavy rain causes untreated sewage to be discharged into waterways.
+- **Leaking pipes**: Damaged sewer lines release sewage gradually.
+- **Misconnections**: Improper plumbing sends wastewater to storm drains.
+- **Stormwater runoff**: Rainwater carries fecal matter from streets into waterways.
