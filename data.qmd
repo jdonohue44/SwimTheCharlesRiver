@@ -16,7 +16,8 @@ Visual Crossing is a provider of weather data and enterprise analysis tools to d
 
 ## Missing Data Analysis
 
-1. Fecal bacteria data is not recorded by the Charles River Buoy (e.g. enterococci samples).
+1. Fecal bacteria data is not measured by the Charles River Buoy (e.g. enterococci samples).
 2. Peak COVID pandemic years are missing data reporting by the Charles River Buoy (2020-2021).
+3. Buoy data is only reported between mid-May and mid-October. There is no data for November through April.
 
 

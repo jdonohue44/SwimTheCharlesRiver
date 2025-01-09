@@ -1,15 +1,21 @@
 # Introduction
 
-The movement to make urban waterways more accessible to swimmers is gaining momentum, with various initiatives underway in Boston and New York: [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/), [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/), [Boston City Splash](https://thecharles.org/city-splash/), [New York East River Plus Pool](https://pluspool.com/pool/design/), and [New York Hudson River Keeper](https://www.riverkeeper.org/).
- 
-In support of the revitalization of urban rivers as swimming destinations, this report focuses on the analysis of cyanobacteria levels in Boston’s Charles River. By assessing these levels, we aim to estimate the number of safe swimming days throughout the year. However, cyanobacteria concentration alone cannot fully determine water quality for swimming. A more holistic assessment, including sewage contamination data and further environmental analysis, is essential to ensure public safety.
+The movement to make urban waterways more accessible to swimmers is gaining momentum, with various initiatives underway in Boston and New York: 
+
+1. [Boston City Splash](https://thecharles.org/city-splash/)
+2. [Boston Charles River Swimming Club](https://www.charlesriverswimmingclub.org/)
+3. [Boston Charles River Swim Park Project](https://thecharles.org/swim-park-project/)
+4. [New York East River Plus Pool](https://pluspool.com/pool/design/)
+5. [New York Hudson River Keeper](https://www.riverkeeper.org/)
+
+In support of the revitalization of urban rivers as swimming destinations, this report focuses on the analysis of cyanobacteria levels in Boston’s Charles River. By assessing these levels, we aim to estimate the number of safe swimming days throughout the year.
 
 ![Boston Charles River, City Splash 2024](./img/citysplash2024.jpg){width="100%" fig-align="center"}
 
 # Background on the biological risks associated with swimming in urban waters
 
-## Harmful Algal Blooms (HABs) -- focus of this analysis
-Harmful Algal Blooms (HABs) occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of HAB is cyanobacteria, also known as blue-green algae. Cyanobacteria levels are the focus of this analysis.
+## Harmful Algal Blooms (HABs)
+**Harmful Algal Blooms (HABs) are the focus of this analysis.** HABs occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of HAB is cyanobacteria, also known as blue-green algae. Cyanobacteria levels are the focus of this analysis.
 
-## Sewage contamination from human fecal matter -- data not available
-Sewage contamination in urban waters occurs when untreated or poorly treated sewage, containing human waste, enters rivers, lakes, and other water bodies. This can lead to health risks for humans and aquatic life due to harmful pathogens like **Enterococci** and **E. coli**. Common sources include leaks, combined sewer overflows (CSOs), and improper disposal.
+## Sewage contamination from human fecal matter
+**Sewage contamination data is not available for this analysis.** Sewage contamination in urban waters occurs when untreated or poorly treated sewage, containing human waste, enters rivers, lakes, and other water bodies. This can lead to health risks for humans and aquatic life due to harmful pathogens like Enterococci and E. coli. Common sources include leaks, combined sewer overflows (CSOs), and improper disposal.

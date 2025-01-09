@@ -1,14 +1,20 @@
 # Conclusion
-In 2024, there were 51 safe-for-swim days (34%) between May and October based on cyanobacteria levels, and rainfall was not strongly correlated with cyanobacteria levels.
+In the 2024 season, cyanobacteria levels in the Charles River exhibited notable variability, with **51 days (34%)** categorized as **low risk**, **41 days (27%)** as **medium risk**, and **58 days (39%)** as **high risk**. The data also indicated that cyanobacteria levels tended to **increase over the course of the summer**, suggesting a seasonal shift where early summer presents a lower risk for swimming compared to late summer.
 
-However, the Charles River buoy does not currently monitor fecal bacteria levels (e.g. Enterococci) and wet weather is a known trigger of fecal contamination which can make water unsafe for swimming. Understanding the levels of fecal bacteria from sewage contamination is an essential next step before advising on swim water safety in the Charles River.
+Water temperature also plays a critical role in swimmer safety. **Surface water temperatures remained above 70°F throughout June, July, and August**, making the summer months generally favorable for swimming. For swimmers venturing into the river in May or September, a 2-3mm wetsuit is recommended, while in October, a 4-5mm wetsuit is advisable for optimal safety and comfort.
+
+Interestingly, **rainfall did not show a significant correlation with cyanobacteria levels**. The Spearman correlation coefficient was low, indicating a weak negative relationship, which deviates from expected trends. This suggests that factors other than precipitation—such as nutrient levels and water temperature—are more influential in shaping cyanobacteria dynamics in the river. Rainfall may be more closely linked to the runoff of fecal bacteria, a factor not included in this analysis but one that warrants attention, particularly since wet weather is known to exacerbate contamination risks.
+
+Given the current limitations of the Charles River buoy monitoring system, which does not measure fecal bacteria such as Enterococci, it is crucial to incorporate this data moving forward. Assessing fecal contamination, especially following rainfall events, is an essential next step to providing comprehensive swim safety advisories. Future studies should focus on expanding our understanding of how both microbial and environmental factors interact to influence water quality and public health in urban water bodies.
 
 ## Future Work
-1. **Collect fecal bacteria data, either through remote sensors or manual sampling.** Certain microorganisms found in fecal matter (e.g. enterococci) are an EPA-approved fecal contamination indicator useful for detecting the presence of disease-causing bacteria, viruses, and protozoa. These pathogens can sicken swimmers and others who use rivers and streams for recreation or eat raw shellfish or fish. Other potential health effects can include diseases of the skin, eyes, ears and respiratory tract. Eating fish or shellfish harvested from waters with fecal contamination can also result in human illness.
-2. **Conduct a qualitative research survey on swimmers living in Boston**. Key questions to answer:
-  - How do urban swimmers perceive their local urban river water quality?
-  - What are the top deterrents preventing swimmers from swimming in the Charles River?
-
+1. **Incorporate Fecal Bacteria Monitoring**  
+   To enhance the assessment of water safety, it is crucial to **collect fecal bacteria data**, either through **remote sensors** or **manual sampling**. Fecal contamination is commonly monitored using **enterococci**, an EPA-approved indicator of disease-causing microorganisms such as bacteria, viruses, and protozoa. These pathogens pose significant health risks, including gastrointestinal, skin, eye, ear, and respiratory infections. Ingesting fish or shellfish from contaminated waters can also lead to foodborne illnesses. Including fecal bacteria in the analysis would provide a more comprehensive picture of water quality, especially following rainfall events when contamination levels may spike.
+2. **Conduct Qualitative Research on Swimmer Perceptions**  
+   Understanding the **perceptions of local swimmers** can offer valuable insights into the **barriers to river recreation** and public health concerns. A **qualitative survey** of urban swimmers in Boston should address key questions such as:  
+   - How do swimmers perceive the **quality of water** in the Charles River?  
+   - What are the **main deterrents** that prevent swimmers from using the river for recreation?  
+   This information will help refine safety advisories, promote community engagement, and guide future river management strategies to improve public confidence and access.
 
 ## References and Further Reading
 1. [Sensor-based detection of algal blooms for public health advisories and long-term monitoring](https://pmc.ncbi.nlm.nih.gov/articles/PMC9562998/)
