@@ -1,9 +1,9 @@
 # Results
  
 ## How many days of the year are cyanobacteria levels safe for swimming in the Charles River?
-In 2024, there were 51 safe-for-swim days (34%) between May and October based on cyanobacteria levels.
+In 2024, between May and October 2024, cyanobacteria levels were low risk on 51 days (34%), medium risk on 41 days (27%), and high risk on 58 days (39%).
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
@@ -22,99 +22,94 @@ water2024_summary <- water2024 |>
   )
 water2024_summary$date <- as.Date(water2024_summary$date, format = "%m/%d/%Y")
 
-# HOURLY 8-2024
-water2024aughourly<-read.csv('./data/crbuoy2024.csv') |> 
-  select(date, time.edt, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`)
-water2024aughourly$datetime <- mdy_hm(paste(water2024aughourly$date, water2024aughourly$time.edt))
-water2024aughourly$day <- day(water2024aughourly$datetime)
-water2024aughourly$hour <- hour(water2024aughourly$datetime)
-```
-
-```{r, message=FALSE, warning=FALSE}
 water2024_summary <- water2024_summary |>
-  mutate(swim_status = if_else(avg_est_cyano < 20000,
-                              "Safe to Swim", 
-                              "Not Safe to Swim"),
-         swim_status = factor(swim_status))
+  mutate(
+    hab_risk = case_when(
+      avg_est_cyano < 20000 ~ "Low Risk",
+      avg_est_cyano >= 20000 & avg_est_cyano < 70000 ~ "Medium Risk",
+      avg_est_cyano >= 70000 ~ "High Risk"                       
+    ),
+    hab_risk = factor(hab_risk, levels = c("Low Risk", "Medium Risk", "High Risk"))
+  )
 
-safe_days <- sum(water2024_summary$swim_status == "Safe to Swim", na.rm = TRUE)
-total_days <- nrow(water2024_summary)
-percent_safe <- round((safe_days/total_days) * 100)
+# Count the number of days for each risk category
+risk_counts <- water2024_summary |>
+  count(hab_risk)
 
-ggplot(water2024_summary, aes(x = date)) +
-  # Create blocks of color for the background
-  geom_tile(aes(y = 1, fill = swim_status, height = 2)) +
-  # Add simple points to mark each day
-  geom_point(aes(y = 1), color = "white", size = 1) +
-  # Colors that are colorblind-friendly
-  scale_fill_manual(values = c("Safe to Swim" = "#2ECC71", 
-                              "Not Safe to Swim" = "#E74C3C")) +
-  labs(title = "Charles River Swimming Safety",
-       subtitle = paste0(safe_days, " safe swimming days (", percent_safe, "% of season)"),
-       x = "Date") +
-  theme_minimal(base_size = 14) +
-  theme(
-    legend.title = element_blank(),
-    legend.position = "bottom",
-    plot.title = element_text(face = "bold", size = 16),
-    plot.subtitle = element_text(size = 12),
-    axis.text.y = element_blank(),
-    axis.title.y = element_blank(),
-    panel.grid = element_blank()
+total_count <- sum(risk_counts$n)
+risk_counts <- risk_counts |>
+  mutate(
+    percentage = (n / total_count) * 100  # Calculate percentage for each category
+  )
+
+ggplot(risk_counts, aes(x = hab_risk, y = n, fill = hab_risk)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")), vjust = -0.5) +  # Add percentage labels
+  scale_fill_manual(values = c("Low Risk" = "lightgreen", "Medium Risk" = "yellow", "High Risk" = "pink", "Unknown" = "gray")) +
+  labs(
+    title = "Number of Risk Days Based on Cyanobacteria Levels",
+    x = "Risk Category",
+    y = "Number of Days"
   ) +
-  scale_x_date(date_labels = "%B", date_breaks = "1 month")
+  theme_minimal()
 ```
 
 ### Estimated Cyanobacteria Levels
-Cyanobacteria levels increased throughout the course of the summer, suggesting that it is safer to swim in the earlier months of the season, like May and June.
+Cyanobacteria levels increased throughout the course of the summer, suggesting that it may be safer to swim in the earlier summer months than the later months.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
-  geom_rect(aes(xmin = min(date), xmax = max(date), 
-                ymin = 0, ymax = 20000), 
+  geom_rect(aes(xmin = min(date), xmax = max(date),
+                ymin = 0, ymax = 20000),
             fill = "lightgreen", alpha = 0.05) +
-  geom_rect(aes(xmin = min(date), xmax = max(date), 
-                ymin = 20000, ymax = 70000), 
+  geom_rect(aes(xmin = min(date), xmax = max(date),
+                ymin = 20000, ymax = 70000),
             fill = "yellow", alpha = 0.05) +
-  geom_rect(aes(xmin = min(date), xmax = max(date), 
-                ymin = 70000, ymax = Inf), 
+  geom_rect(aes(xmin = min(date), xmax = max(date),
+                ymin = 70000, ymax = Inf),
             fill = "pink", alpha = 0.05) +
   geom_line() +
   geom_point() +
   geom_hline(yintercept = 20000, linetype = "dashed", color = "yellow") +
   geom_hline(yintercept = 70000, linetype = "dashed", color = "pink") +
-  annotate("text", x = min(water2024_summary$date), y = 7000, 
+  annotate("text", x = min(water2024_summary$date), y = 7000,
            label = "Low Risk", hjust = 0) +
-  annotate("text", x = min(water2024_summary$date), y = 25000, 
+  annotate("text", x = min(water2024_summary$date), y = 25000,
            label = "Medium Risk", hjust = 0) +
-  annotate("text", x = min(water2024_summary$date), y = 75000, 
+  annotate("text", x = min(water2024_summary$date), y = 75000,
            label = "High Risk", hjust = 0) +
   scale_y_continuous(
-    labels = scales::comma, 
+    labels = scales::comma,
     breaks = seq(0, max(water2024_summary$avg_est_cyano), by = 10000)
     ) +
-  labs(title = "2024 Charles River Cyanobacteria Levels", 
-       x = "Date", 
+  labs(title = "2024 Charles River Estimated Cyanobacteria Levels",
+       x = "Date",
        y = "Cyanobacteria Cells/mL") +
   theme_bw() +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
 
 ### Water Temperature
-Another simple factor affecting a swimmer's decision to enter urban waters is the water temperature. Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.
+Another simple factor affecting a swimmer's decision to enter urban waters is water temperature. Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
+                ymin = 70, ymax = Inf), 
+            fill = "cadetblue1", alpha = 0.01) +
+  geom_rect(aes(xmin = min(date), xmax = max(date), 
                 ymin = 60, ymax = 70), 
-            fill = "lightblue", alpha = 0.01) +
+            fill = "#17c3b2", alpha = 0.01) +
   geom_rect(aes(xmin = min(date), xmax = max(date), 
                 ymin = 50, ymax = 60), 
-            fill = "blue", alpha = 0.01) +
+            fill = "#1f77b4", alpha = 0.01) +
   geom_line() +
   geom_point() +
+    geom_hline(yintercept = 70, linetype = "dashed", color = "blue") +
   geom_hline(yintercept = 60, linetype = "dashed", color = "blue") +
-  geom_hline(yintercept = 50, linetype = "dashed", color = "lightblue") +
+  geom_hline(yintercept = 50, linetype = "dashed", color = "blue") +
+    annotate("text", x = min(water2024_summary$date), y = 71, 
+           label = "no wetsuit needed", hjust = 0) +
   annotate("text", x = min(water2024_summary$date), y = 61, 
            label = "2-3mm wetsuit recommended", hjust = 0) +
   annotate("text", x = min(water2024_summary$date), y = 51, 
@@ -127,35 +122,22 @@ ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
 ```
 
-## Is rainfall associated with water quality?
+## Is rainfall correlated with water quality?
+Overall, while there is some evidence of a relationship between precipitation and cyanobacteria levels, precipitation alone does not explain much of the variation in cyanobacteria levels. Other factors (e.g., nutrients, temperature) might play a more substantial role in driving variations in cyanobacteria.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Rainfall alone is not a strong predictor of cyanobacteria levels. The Spearman correlation of -0.2927 indicates a weak negative correlation between precipitation (precip) and cyanobacteria levels (avg_est_cyano). This suggests that, in general, as precipitation increases, cyanobacteria levels tend to decrease slightly, but the relationship is weak.
+
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(lubridate)
+library(scales)
 
-# DAILY
 weather2024<-read.csv('./data/weather2024daily.csv')
 weather2024<-weather2024 |> 
   select(datetime,temp,precip)
 weather2024$date<-as.Date(weather2024$datetime, format = "%Y-%m-%d")
-
-# HOURLY
-weather2024aughourly<-read.csv('./data/weather2024hourly.csv')
-weather2024aughourly<-weather2024aughourly |> 
-  select(datetime,temp,precip)
-weather2024aughourly$datetime <- ymd_hms(weather2024aughourly$datetime)
-weather2024aughourly <- weather2024aughourly |>
-  mutate(
-    day = day(datetime),
-    hour = hour(datetime)
-  )
-```
-
-```{r, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(scales)
 
 weather_and_water_2024<-merge(water2024_summary, weather2024, by = 'date')
 
@@ -169,56 +151,58 @@ ggplot(weather_and_water_2024, aes(x = date)) +
     sec.axis = sec_axis(~.*75000, name = "Avg Est Cyano", 
                         breaks = seq(0, 150000, 30000))
   ) +
-  scale_color_manual(values = c("Precipitation" = "blue", "Avg Est Cyano" = "red")) +
+  scale_color_manual(values = c("Precipitation" = "blue", "Avg Est Cyano" = "chartreuse2")) +
   labs(title = "Precipitation and Avg Est Cyano over Time",
        x = "Date",
        color = "Variable") +
   theme_minimal() +
-  theme(axis.title.y.right = element_text(color = "red"),
+  theme(axis.title.y.right = element_text(color = "chartreuse2"),
         axis.title.y.left = element_text(color = "blue"))
-
 ```
-```{r}
-cor(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "pearson", use = "complete.obs")
+```{r, message=FALSE, warning=FALSE}
+ggplot(weather_and_water_2024, aes(x = precip, y = avg_est_cyano)) +
+  geom_point() +  # Scatter plot to visualize the relationship
+  geom_smooth(method = "loess", color = "blue") +  # Adding a smooth curve to visualize trends
+  labs(title = "Precipitation vs Cyanobacteria Levels",
+       x = "Daily Precipitation (inches)", 
+       y = "Cyanobacteria Levels (cells/mL)") +
+  theme_minimal()
 
-plot(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano,
-     main = "Correlation between Precipitation and Avg Est. Cyanobacteria",
-     xlab = "Precipitation (inches)", ylab = "Avg Estimated Cyanobacteria",
-     pch = 19)
+# Histogram for precipitation
+ggplot(weather_and_water_2024, aes(x = precip)) + 
+  geom_histogram(binwidth = 0.1, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Precipitation (inches)", x = "Precipitation (inches)", y = "Count")
 
-```
+# Histogram for cyanobacteria levels
+ggplot(weather_and_water_2024, aes(x = avg_est_cyano)) + 
+  geom_histogram(binwidth = 5000, fill = "orange", color = "black") +
+  labs(title = "Distribution of Cyanobacteria Levels", x = "Cyanobacteria (cells/mL)", y = "Count")
 
+weather_and_water_2024$log_cyano <- log(weather_and_water_2024$avg_est_cyano + 1)  # Adding 1 to avoid log(0)
 
-```{r}
-# Lag precipitation by 1, 2, and 3 days
-weather_and_water_2024$lag_1_precip <- lag(weather_and_water_2024$precip, n = 1)
-weather_and_water_2024$lag_2_precip <- lag(weather_and_water_2024$precip, n = 2)
-weather_and_water_2024$lag_3_precip <- lag(weather_and_water_2024$precip, n = 3)
+lm_model <- lm(avg_est_cyano ~ precip, data = weather_and_water_2024)
 
-# Calculate Spearman correlations for different lags
-cor_1_spearman <- cor(weather_and_water_2024$lag_1_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
-cor_2_spearman <- cor(weather_and_water_2024$lag_2_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
-cor_3_spearman <- cor(weather_and_water_2024$lag_3_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+library(mgcv)
+gam_model <- gam(avg_est_cyano ~ s(precip), data = weather_and_water_2024)
 
-# Print Spearman correlations for each lag
-print(paste("Spearman correlation with 1-day lag:", cor_1_spearman))
-print(paste("Spearman correlation with 2-day lag:", cor_2_spearman))
-print(paste("Spearman correlation with 3-day lag:", cor_3_spearman))
-```
-```{r}
-# Create a vector for lag values
-lags <- c(1, 2, 3)
-
-# Store the Spearman correlation results for each lag
-spearman_correlations <- c(cor_1_spearman, cor_2_spearman, cor_3_spearman)
-
-# Plot the Spearman correlation against lag time
-plot(lags, spearman_correlations, type = "o", 
-     main = "Spearman Lagged Correlation between Precipitation and Avg Est. Cyanobacteria",
-     xlab = "Lag (days)", ylab = "Spearman Correlation",
-     pch = 19, col = "blue")
-
+cor_test <- cor.test(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+cor_test$p.value
 ```
 
+```{r, message=FALSE, warning=FALSE}
+# Lag precipitation by a day
+# weather_and_water_2024$lag_1_precip <- lag(weather_and_water_2024$precip, n = 1)
+# cor_1_day_lag_spearman <- cor(weather_and_water_2024$lag_1_precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+# print(paste("Spearman correlation with 1-day lag:", cor_1_day_lag_spearman))
 
+cor_spearman<-cor(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
 
+ggplot(weather_and_water_2024, aes(x = precip, y = avg_est_cyano)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Precipitation vs Cyanobacteria Levels", 
+       x = "Precipitation (mm)", 
+       y = "Cyanobacteria Levels (cells/mL)")
+
+cor_test <- cor.test(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")
+```

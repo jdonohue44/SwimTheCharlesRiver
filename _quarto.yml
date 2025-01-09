@@ -6,7 +6,7 @@ execute:
   echo: true
 
 book:
-  title: "Swim the Charles River: Analyzing Safe-for-Swim Days in Boston's Charles River"
+  title: "Swimming in the Charles River: Assessing Biological Swim Safety in Boston's Urban Waterway"
   author:
     - Jared Donohue (jjd2203)
   repo-url: https://github.com/jdonohue44/SwimTheCharlesRiver

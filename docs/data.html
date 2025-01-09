@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River - 2&nbsp; Data</title>
+<title>2&nbsp; Data – Swimming in the Charles River: Assessing Biological Swim Safety in Boston's Urban Waterway</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,13 +78,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Swim the Charles River: Analyzing Safe-for-Swim Days in Boston’s Charles River</a> 
+      <a href="./">Swimming in the Charles River: Assessing Biological Swim Safety in Boston’s Urban Waterway</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/jdonohue44/SwimTheCharlesRiver" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -143,7 +143,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link active" data-scroll-target="#data-sources"><span class="header-section-number">2.1</span> Data Sources</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link active" data-scroll-target="#data-sources"><span class="header-section-number">2.1</span> Data Sources</a>
+  <ul class="collapse">
+  <li><a href="#water-quality-buoy-placed-in-the-lower-charles-river" id="toc-water-quality-buoy-placed-in-the-lower-charles-river" class="nav-link" data-scroll-target="#water-quality-buoy-placed-in-the-lower-charles-river"><span class="header-section-number">2.1.1</span> <strong>Water Quality Buoy placed in the Lower Charles River</strong></a></li>
+  <li><a href="#visual-crossing-historical-weather-data-api" id="toc-visual-crossing-historical-weather-data-api" class="nav-link" data-scroll-target="#visual-crossing-historical-weather-data-api"><span class="header-section-number">2.1.2</span> <strong>Visual Crossing Historical Weather Data API</strong></a></li>
+  </ul></li>
   <li><a href="#missing-data-analysis" id="toc-missing-data-analysis" class="nav-link" data-scroll-target="#missing-data-analysis"><span class="header-section-number">2.2</span> Missing Data Analysis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/edit/main/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/SwimTheCharlesRiver/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -170,30 +174,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="data-sources" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">2.1</span> Data Sources</h2>
+<section id="water-quality-buoy-placed-in-the-lower-charles-river" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="water-quality-buoy-placed-in-the-lower-charles-river"><span class="header-section-number">2.1.1</span> <strong><a href="https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river">Water Quality Buoy placed in the Lower Charles River</a></strong></h3>
+<p>Every 15 minutes, this self-contained solar powered buoy takes measurements for temperature, dissolved oxygen, pH, specific conductance, turbidity, chlorophyll, and phycocyanin. The sensors on the buoy are located 1 meter below the water’s surface. The data are transmitted in real-time using telemetry for remote access. The data from this buoy is used to assess water quality conditions and to help track cyanobacteria (blue-green algae) blooms.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="./img/crbuoy.jpg" class="img-fluid figure-img" style="width:25.0%"></p>
+<p><img src="./img/crbuoy.jpg" class="img-fluid figure-img" style="width:33.0%"></p>
 <figcaption>Charles River Water Quality Buoy</figcaption>
 </figure>
 </div>
-<section id="data-sources" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">2.1</span> Data Sources</h2>
-<ul>
-<li><a href="https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river">Water Quality Buoy placed in the Lower Charles River (2015-2024)</a>: Every 15 minutes, this self-contained solar powered buoy takes measurements for temperature, dissolved oxygen, pH, specific conductance, turbidity, chlorophyll, and phycocyanin. The sensors on the buoy are located 1 meter below the water’s surface. The data are transmitted in real-time using telemetry for remote access. The data from this buoy is used to assess water quality conditions and to help track cyanobacteria (blue-green algae) blooms.</li>
-<li><a href="https://www.visualcrossing.com/weather/weather-data-services">Visual Crossing Historical Weather Data API (2024)</a>: Visual Crossing is a provider of weather data and enterprise analysis tools to data scientists, business analysts, professionals, and academics. Founded in 2003, this weather data API leads the industry by providing the lowest-cost access to all types of historical weather data, weather forecasts, climate summaries, and historical weather forecasts.</li>
-</ul>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="./img/buoy-saltwater.jpg" class="img-fluid figure-img" style="width:33.0%"></p>
+<figcaption>Buoy Location</figcaption>
+</figure>
+</div>
+</section>
+<section id="visual-crossing-historical-weather-data-api" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="visual-crossing-historical-weather-data-api"><span class="header-section-number">2.1.2</span> <strong><a href="https://www.visualcrossing.com/weather/weather-data-services">Visual Crossing Historical Weather Data API</a></strong></h3>
+<p>Visual Crossing is a provider of weather data and enterprise analysis tools to data scientists, business analysts, professionals, and academics. Founded in 2003, this weather data API leads the industry by providing the lowest-cost access to all types of historical weather data, weather forecasts, climate summaries, and historical weather forecasts.</p>
+</section>
 </section>
 <section id="missing-data-analysis" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="missing-data-analysis"><span class="header-section-number">2.2</span> Missing Data Analysis</h2>
-<ul>
-<li>No data on Sewage Contamination from Human Fecal Matter (e.g.&nbsp;Enterococci samples).</li>
-<li>Covid years are missing water buoy data (2020-2021).</li>
-<li>In order to stay within free-tier usage, only historical weather data from the following time ranges were downloaded from Visual Crossing:
-<ul>
-<li>2024 (daily)</li>
-<li>August, 2024 (hourly)</li>
-</ul></li>
-</ul>
+<ol type="1">
+<li>Fecal bacteria data is not recorded by the Charles River Buoy (e.g.&nbsp;enterococci samples).</li>
+<li>Peak COVID pandemic years are missing data reporting by the Charles River Buoy (2020-2021).</li>
+</ol>
 
 
 </section>
@@ -234,18 +243,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -277,7 +275,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -285,7 +305,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

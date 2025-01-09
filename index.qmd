@@ -6,27 +6,10 @@ In support of the revitalization of urban rivers as swimming destinations, this 
 
 ![Boston Charles River, City Splash 2024](./img/citysplash2024.jpg){width="100%" fig-align="center"}
 
-# Biological risks associated with swimming in urban waters
+# Background on the biological risks associated with swimming in urban waters
 
 ## Harmful Algal Blooms (HABs) -- focus of this analysis
 Harmful Algal Blooms (HABs) occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of HAB is cyanobacteria, also known as blue-green algae. Cyanobacteria levels are the focus of this analysis.
 
-In the Charles River in Boston, key sources of Harmful Algal Blooms (HABs) include:
-
-- **Wastewater treatment plants**: Effluent from treatment facilities can introduce excess nitrogen and phosphorus into the river.
-- **Stormwater runoff**: Rainwater washes nutrients, such as fertilizers and pollutants, from streets, lawns, and impervious surfaces into the river.
-- **Sewage overflows**: Combined sewer overflows (CSOs) during heavy rainfall can discharge untreated sewage, which adds nutrients to the river.
-- **Urban and industrial runoff**: Water from urban areas and industrial sites may contain nutrients that fuel algae growth.
-- **Nutrient-rich rainfall**: Increased nitrogen and phosphorus from rainfall can exacerbate nutrient loading in the river.
-
-These sources contribute to the nutrient imbalances that promote the growth of cyanobacteria and other harmful algal species, leading to potential health risks for humans and aquatic life.
-
 ## Sewage contamination from human fecal matter -- data not available
 Sewage contamination in urban waters occurs when untreated or poorly treated sewage, containing human waste, enters rivers, lakes, and other water bodies. This can lead to health risks for humans and aquatic life due to harmful pathogens like **Enterococci** and **E. coli**. Common sources include leaks, combined sewer overflows (CSOs), and improper disposal.
-
-Key sources of contamination:
-
-- **Combined sewer overflows (CSOs)**: Heavy rain causes untreated sewage to be discharged into waterways.
-- **Leaking pipes**: Damaged sewer lines release sewage gradually.
-- **Misconnections**: Improper plumbing sends wastewater to storm drains.
-- **Stormwater runoff**: Rainwater carries fecal matter from streets into waterways.
