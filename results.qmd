@@ -1,7 +1,7 @@
 # Results
  
-## How many days of the year are cyanobacteria levels safe for swimming in the Charles River?
-In the 2024 season, cyanobacteria levels were **low risk on 51 days (34%)**, **medium risk on 41 days (27%)**, and **high risk on 58 days (39%)**.
+## How many days of the 2024 season are cyanobacteria levels safe for swimming in the Charles River?
+In the 2024 season, cyanobacteria levels were low risk on 51 days (34%), medium risk on 41 days (27%), and high risk on 58 days (39%).
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -33,30 +33,29 @@ water2024_summary <- water2024_summary |>
   )
 
 # Count the number of days for each risk category
-risk_counts <- water2024_summary |>
+risk_counts2024 <- water2024_summary |>
   count(hab_risk)
 
-total_count <- sum(risk_counts$n)
-risk_counts <- risk_counts |>
+total_count2024 <- sum(risk_counts2024$n)
+risk_counts2024 <- risk_counts2024 |>
   mutate(
-    percentage = (n / total_count) * 100  # Calculate percentage for each category
+    percentage = (n / total_count2024) * 100  # Calculate percentage for each category
   )
 
-# PLOT
-ggplot(risk_counts, aes(x = hab_risk, y = n, fill = hab_risk)) +
+ggplot(risk_counts2024, aes(x = hab_risk, y = n, fill = hab_risk)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
   geom_text(aes(label = paste0(round(percentage, 1), "%")), vjust = -0.5) +  # Add percentage labels
   scale_fill_manual(values = c("Low Risk" = "lightgreen", "Medium Risk" = "yellow", "High Risk" = "pink", "Unknown" = "gray")) +
-  scale_y_continuous(limits = c(0, 70)) +
+  scale_y_continuous(limits = c(0, 100)) +
   labs(
-    title = "Number of Risk Days Based on Cyanobacteria Levels",
+    title = "Risky Swim Days by Cyanobacteria Level (2024)",
     x = "Risk Category",
     y = "Number of Days"
   ) +
   labs(x = NULL) +
   theme_minimal(base_size = 15) +
     theme(
-        plot.title = element_text(size = 18, face = "bold", hjust = 0.5),  # Title style
+        plot.title = element_text(size = 18, hjust = 0.5),  # Title style
         axis.title = element_text(size = 14),  # Axis titles
         axis.text = element_text(size = 12),  # Axis labels
         panel.grid.major = element_blank(),  # Remove major grid lines
@@ -65,19 +64,19 @@ ggplot(risk_counts, aes(x = hab_risk, y = n, fill = hab_risk)) +
 ```
 
 ### Estimated Cyanobacteria Levels
-**Cyanobacteria levels increased over the course of the summer**, suggesting that early summer is lower risk than the late summer for swimming.
+Cyanobacteria levels increased over the course of the summer, suggesting that early summer is lower risk than the late summer for swimming.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   geom_rect(aes(xmin = min(date), xmax = max(date),
                 ymin = 0, ymax = 20000),
-            fill = "lightgreen", alpha = 0.05) +
+            fill = "lightgreen", alpha = 0.03) +
   geom_rect(aes(xmin = min(date), xmax = max(date),
                 ymin = 20000, ymax = 70000),
-            fill = "yellow", alpha = 0.05) +
+            fill = "yellow", alpha = 0.03) +
   geom_rect(aes(xmin = min(date), xmax = max(date),
                 ymin = 70000, ymax = Inf),
-            fill = "pink", alpha = 0.05) +
+            fill = "pink", alpha = 0.03) +
   geom_line(color = "#3b3b3b", size = 1.2) +
   geom_point(color = "#3b3b3b", size = 1.8) + 
   geom_hline(yintercept = 20000, linetype = "solid", color = "gold") +
@@ -89,27 +88,31 @@ ggplot(water2024_summary, aes(x = date, y = avg_est_cyano)) +
   annotate("text", x = min(water2024_summary$date), y = 75000,
            label = "High Risk", hjust = 0) +
   scale_y_continuous(
+    limits = c(0,100000),
     labels = scales::comma,
     breaks = seq(0, max(water2024_summary$avg_est_cyano), by = 10000)
     ) +
-  labs(title = "2024 Charles River Estimated Cyanobacteria Levels",
+    scale_x_date(
+    limits = as.Date(c("2024-05-01", "2024-11-01")),
+    date_labels = "%b %d", 
+    date_breaks = "15 day") +
+  labs(title = "Estimated Cyanobacteria Levels by Date (2024)",
        x = NULL,
        y = "Cyanobacteria Cells/mL") +
   theme_minimal(base_size = 15) +
   theme (
-    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),  # Title style
+    plot.title = element_text(size = 18, hjust = 0.5),  # Title style
     axis.title = element_text(size = 14),  # Axis titles size
     axis.text = element_text(size = 12),  # Axis labels size
     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate X-axis labels for clarity
     panel.grid.major = element_blank(),  # Remove major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     plot.margin = margin(10, 10, 10, 10)  # Adjust margins for better spacing
-  ) +
-  scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
+  )
 ```
 
 ### Water Temperature
-Another simple factor affecting a swimmer's decision to enter urban waters is water temperature. **Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit**. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.
+Another simple factor affecting a swimmer's decision to enter urban waters is water temperature. Good news! For all of June, July, and August the surface water temperature was above 70 degrees Fahrenheit. For swimming in May or September, a 2-3mm wetsuit is recommended. In October, a 4-5mm wetsuit is recommended.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
@@ -134,24 +137,28 @@ ggplot(water2024_summary, aes(x = date, y = avg_temp)) +
   annotate("text", x = min(water2024_summary$date), y = 51,
            label = "4-5mm wetsuit recommended", hjust = 0) +
   scale_y_continuous(breaks = seq(0, max(water2024_summary$avg_temp), by = 5)) +
-  labs(title = "2024 Charles River Water Temperature",
+  scale_x_date(
+    limits = as.Date(c("2024-05-01", "2024-11-01")),
+    date_labels = "%b %d", 
+    date_breaks = "15 day"
+  ) +
+  labs(title = "Surface Water Temperature by Date (2024)",
        x = NULL,
        y = "Temperature (F)") +
   theme_bw(base_size = 15) +  # Larger base size for readability
   theme(
-    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),  # Title style
+    plot.title = element_text(size = 18, hjust = 0.5),  # Title style
     axis.title = element_text(size = 14),  # Axis titles size
     axis.text = element_text(size = 12),  # Axis labels size
     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate X-axis labels for clarity
     panel.grid.major = element_blank(),  # Remove major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     plot.margin = margin(10, 10, 10, 10)  # Adjust margins for better spacing
-  ) +
-  scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
+  )
 ```
 
 ## Is rainfall correlated with water quality?
-**Rainfall does not appear to be correlated with cyanobacteria levels**. Other factors (e.g., nutrients, temperature) might play a more substantial role in driving variations in cyanobacteria, and rainfall may have a stronger correlation with fecal bacteria from sewage runoff (not included in this analysis).
+Rainfall does not appear to be correlated with cyanobacteria levels. Other factors (e.g., nutrients, temperature) might play a more substantial role in driving variations in cyanobacteria, and rainfall may have a stronger correlation with fecal bacteria from sewage runoff (not included in this analysis).
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -177,15 +184,20 @@ ggplot(weather_and_water_2024, aes(x = date)) +
     breaks = seq(0, 2, 0.5),
     sec.axis = sec_axis(~.*75000, name = "Cyanobacteria Cells/mL", breaks = seq(0, 150000, 30000))
   ) +
+  scale_x_date(
+    limits = as.Date(c("2024-05-01", "2024-11-01")),
+    date_labels = "%b %d", 
+    date_breaks = "15 day"
+  ) +
   scale_color_manual(values = c("Precipitation" = "blue", "Cyanobacteria Cells/mL" = "chartreuse2")) +
   labs(
-    title = "Precipitation and Cyanobacteria over Time",
+    title = "Precipitation and Cyanobacteria by Date (2024)",
     x = NULL,
     color = "Variable"
   ) +
   theme_minimal(base_size = 15) +
   theme(
-    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),  # Title styling
+    plot.title = element_text(size = 18, hjust = 0.5),  # Title styling
     axis.title = element_text(size = 14),  # Axis labels styling
     axis.text = element_text(size = 12),  # Axis ticks styling
     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate X-axis labels for better readability
@@ -195,8 +207,7 @@ ggplot(weather_and_water_2024, aes(x = date)) +
     panel.grid.major = element_line(color = "gray90"),  # Slight grid lines for better visibility
     panel.grid.minor = element_blank(),  # No minor grid lines
     plot.margin = margin(10, 15, 10, 10)  # Adjust plot margins for clarity
-  ) +
-  scale_x_date(date_labels = "%b %d", date_breaks = "15 day")
+  ) 
 ```
 
 The Spearman correlation score for rainfall and cyanobacteria levels is `{r} cor_spearman<-cor(weather_and_water_2024$precip, weather_and_water_2024$avg_est_cyano, method = "spearman", use = "complete.obs")`, suggesting a weak negative correlation. This is the opposite of what we expected and should be investigated further, perhaps on a larger or more fine grained data set. 
@@ -206,13 +217,13 @@ ggplot(weather_and_water_2024, aes(x = precip, y = avg_est_cyano)) +
   geom_point(size = 1.8, alpha = 0.7, color = "#3b3b3b") +
   geom_smooth(method = "lm", se = FALSE, color = "red", size = 1.2) +
   labs(
-    title = "Precipitation vs Cyanobacteria Levels", 
+    title = "Precipitation vs Cyanobacteria Levels (2024)", 
     x = "Precipitation (mm)", 
     y = "Cyanobacteria Levels (cells/mL)"
   ) +
   theme_minimal(base_size = 15) +  # Use minimal theme for a clean look
   theme(
-    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),  # Bold and centered title
+    plot.title = element_text(size = 18, hjust = 0.5),  # Bold and centered title
     axis.title = element_text(size = 14),  # Axis titles size
     axis.text = element_text(size = 12),  # Axis tick labels size
     panel.grid.major = element_line(color = "gray90"),  # Light grid lines for readability
@@ -220,3 +231,153 @@ ggplot(weather_and_water_2024, aes(x = precip, y = avg_est_cyano)) +
     plot.margin = margin(10, 15, 10, 10)  # Adjust margins for clarity
   )
 ```
+
+## Historical Analysis (2021-2024)
+```{r, message=FALSE, warning=FALSE, fig.width = 12, fig.height = 10}
+# 2021
+water2021<-read.csv('./data/crbuoy2021.csv')
+water2021_summary <- water2021 |> 
+  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
+  group_by(date) |> 
+  summarize(
+    avg_temp = pmax(mean((temp.c * 9/5) + 32, na.rm = TRUE),0),
+    avg_oxygen = pmax(mean(`do..mg.l.`, na.rm = TRUE),0),
+    avg_chloro = pmax(mean(`est.chl.a..ug.l.`, na.rm = TRUE),0),
+    avg_est_cyano = pmax(mean(`est..cyano..cells.ml.`, na.rm = TRUE),0)
+  )
+water2021_summary$date <- as.Date(water2021_summary$date, format = "%m/%d/%Y")
+
+# 2022
+water2022<-read.csv('./data/crbuoy2022.csv')
+water2022_summary <- water2022 |> 
+  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
+  group_by(date) |> 
+  summarize(
+    avg_temp = pmax(mean((temp.c * 9/5) + 32, na.rm = TRUE),0),
+    avg_oxygen = pmax(mean(`do..mg.l.`, na.rm = TRUE),0),
+    avg_chloro = pmax(mean(`est.chl.a..ug.l.`, na.rm = TRUE),0),
+    avg_est_cyano = pmax(mean(`est..cyano..cells.ml.`, na.rm = TRUE),0)
+  )
+water2022_summary$date <- as.Date(water2022_summary$date, format = "%m/%d/%Y")
+
+# 2023
+water2023<-read.csv('./data/crbuoy2023.csv')
+water2023_summary <- water2023 |> 
+  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
+  group_by(date) |> 
+  summarize(
+    avg_temp = pmax(mean((temp.c * 9/5) + 32, na.rm = TRUE),0),
+    avg_oxygen = pmax(mean(`do..mg.l.`, na.rm = TRUE),0),
+    avg_chloro = pmax(mean(`est.chl.a..ug.l.`, na.rm = TRUE),0),
+    avg_est_cyano = pmax(mean(`est..cyano..cells.ml.`, na.rm = TRUE),0)
+  )
+water2023_summary$date <- as.Date(water2023_summary$date, format = "%m/%d/%Y")
+
+# 2024
+water2024<-read.csv('./data/crbuoy2024.csv')
+water2024_summary <- water2024 |> 
+  select(date, temp.c, `do..mg.l.`, `est.chl.a..ug.l.`, `est..cyano..cells.ml.`) |> 
+  group_by(date) |> 
+  summarize(
+    avg_temp = pmax(mean((temp.c * 9/5) + 32, na.rm = TRUE),0),
+    avg_oxygen = pmax(mean(`do..mg.l.`, na.rm = TRUE),0),
+    avg_chloro = pmax(mean(`est.chl.a..ug.l.`, na.rm = TRUE),0),
+    avg_est_cyano = pmax(mean(`est..cyano..cells.ml.`, na.rm = TRUE),0)
+  )
+water2024_summary$date <- as.Date(water2024_summary$date, format = "%m/%d/%Y")
+
+# Drop hab_risk column to combine years
+water2024_summary <- water2024_summary[, !(names(water2024_summary) %in% "hab_risk")]
+
+# Combine the data
+water_data <- rbind(
+  transform(water2021_summary, year = 2021),
+  transform(water2022_summary, year = 2022),
+  transform(water2023_summary, year = 2023),
+  transform(water2024_summary, year = 2024)
+)
+
+decor_data <- water_data |>
+  group_by(year) |>
+  summarize(
+    xmin = min(date),
+    xmax = max(date),
+    low_risk_label_x = min(date),
+    medium_risk_label_x = min(date),
+    high_risk_label_x = min(date),
+    low_risk_label_y = 7000,
+    medium_risk_label_y = 25000,
+    high_risk_label_y = 75000
+  )
+
+# Create the 2x2 grid of plots using facet_wrap
+ggplot(water_data, aes(x = date, y = avg_est_cyano)) +
+  geom_rect(
+    data = decor_data,
+    aes(xmin = xmin, xmax = xmax, ymin = 0, ymax = 20000),
+    fill = "lightgreen",
+    alpha = 0.6,
+    inherit.aes = FALSE
+  ) +
+  geom_rect(
+    data = decor_data,
+    aes(xmin = xmin, xmax = xmax, ymin = 20000, ymax = 70000),
+    fill = "yellow",
+    alpha = 0.6,
+    inherit.aes = FALSE
+  ) +
+  geom_rect(
+    data = decor_data,
+    aes(xmin = xmin, xmax = xmax, ymin = 70000, ymax = Inf),
+    fill = "pink",
+    alpha = 0.6,
+    inherit.aes = FALSE
+  ) +
+  geom_line(color = "#3b3b3b", size = 1.2) +
+  geom_point(color = "#3b3b3b", size = 1.8) +
+  geom_hline(yintercept = 20000, linetype = "solid", color = "gold") +
+  geom_hline(yintercept = 70000, linetype = "solid", color = "red") +
+  geom_text(
+    data = decor_data,
+    aes(x = low_risk_label_x, y = low_risk_label_y, label = "Low Risk"),
+    hjust = 0,
+    inherit.aes = FALSE
+  ) +
+  geom_text(
+    data = decor_data,
+    aes(x = medium_risk_label_x, y = medium_risk_label_y, label = "Medium Risk"),
+    hjust = 0,
+    inherit.aes = FALSE
+  ) +
+  geom_text(
+    data = decor_data,
+    aes(x = high_risk_label_x, y = high_risk_label_y, label = "High Risk"),
+    hjust = 0,
+    inherit.aes = FALSE
+  ) +
+  
+  scale_y_continuous(
+    limits = c(0,100000),
+    labels = scales::comma,
+    breaks = seq(0, max(water_data$avg_est_cyano), by = 10000)
+  ) +
+  scale_x_date(
+    date_labels = "%b %d",
+    date_breaks = "15 day", 
+  ) +
+  labs(title = "Estimated Cyanobacteria Levels by Date",
+       x = NULL,
+       y = "Cyanobacteria Cells/mL") +
+  facet_wrap(~ year, scales = "free_x") +
+  theme_minimal(base_size = 15) +
+  theme(
+    plot.title = element_text(size = 18, hjust = 0.5),
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.margin = margin(10, 10, 10, 10)
+  )
+```
+
