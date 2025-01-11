@@ -2,7 +2,7 @@
 
 ## Data Sources
 
-### **[Water Quality Buoy placed in the Lower Charles River](https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river)**
+### **[EPA Water Quality Buoy placed in the Lower Charles River](https://www.epa.gov/charlesriver/live-water-quality-data-lower-charles-river)**
 
 Every 15 minutes, this self-contained solar powered buoy takes measurements for temperature, dissolved oxygen, pH, specific conductance, turbidity, chlorophyll, and phycocyanin. The sensors on the buoy are located 1 meter below the water's surface. The data are transmitted in real-time using telemetry for remote access. The data from this buoy is used to assess water quality conditions and to help track cyanobacteria (blue-green algae) blooms.
 

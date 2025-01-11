@@ -15,7 +15,7 @@ In support of the revitalization of urban rivers as swimming destinations, this 
 # Background on the biological risks associated with swimming in urban waters
 
 ## Harmful Algal Blooms (HABs) -- *focus of this analysis*
-Harmful Algal Blooms (HABs) are the focus of this analysis, in particular cyanobacteria (also known as blue-green algae). HABs occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of HAB is cyanobacteria, also known as blue-green algae. Cyanobacteria levels are the focus of this analysis.
+Harmful Algal Blooms (HABs) are the focus of this analysis. HABs occur when an excess of nitrogen and phosphorus in water promotes rapid algae growth. These nutrients often come from industrial and wastewater treatment plants, septic tanks, stormwater runoff, and nutrient-rich rainfall. The most common type of harmful algae is cyanobacteria (also known as blue-green algae) which is the primary focus of this analysis.
 
 ## Sewage contamination from human fecal matter -- *data not available for this analysis*
 Sewage contamination data is not available for this analysis. Sewage contamination in urban waters occurs when untreated or poorly treated sewage, containing human waste, enters rivers, lakes, and other water bodies. This can lead to health risks for humans and aquatic life due to harmful pathogens like Enterococci and E. coli. Common sources include leaks, combined sewer overflows (CSOs), and improper disposal.
